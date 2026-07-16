@@ -1,0 +1,61 @@
+@media (min-width: 640px) {
+    .desktop-deets {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .desktop-deets-pic {
+        margin-top: 10rem;
+        display: flex;
+        align-items: center;
+        margin-left: 1rem;
+        justify-content: space-between;
+    }
+
+    .desktop-deets-prime-pic {
+        width: 300px;
+        height: auto;
+    }
+
+    .desktop-deets-thumb-pic {
+        width: calc(33.33%);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+    }
+
+    .desktop-deets-thumb-pic img {
+        width: 100px;
+    }
+
+    .desktop-deets-cta {
+        padding: 1rem;
+        margin: 2rem auto;
+    }
+
+    .desktop-deets-cta a:hover {
+        background-color: #0000cc;
+        color: #ffff00;
+    }
+
+    .desktop-deets-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, .7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        /* cursor: zoom-out; */
+    }
+
+    .desktop-deets-modal img {
+        max-width: 90%;
+        max-height: 90%;
+        /* cursor: default; */
+    }
+
+}

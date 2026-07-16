@@ -1,0 +1,65 @@
+@media (min-width: 640px) {
+    .desktop-donate, .desktop-donate-ways {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .desktop-donate-hero {
+        max-width: 600px;
+        font-size: 3rem;
+        line-height: 3.5rem;
+        padding-top: 6rem;
+    }
+
+    .desktop-donate-hero-p {
+        max-width: 600px;
+        font-size: 1.25rem;
+    }
+
+    .desktop-donate-paypal {
+        display: flex;
+        justify-content: center;
+        max-width: 500px;
+    }
+
+    .desktop-donate-ways {
+        flex-direction: row;
+    }
+
+    .desktop-donate-ways-card {
+        max-width: 400px;
+        height: 305px;
+    }
+
+    .desktop-donate-wish {
+        max-width: 1000px;
+        padding: 1.5rem;
+        gap: 2rem;
+    }
+
+    .desktop-donate-wish-top {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 2rem;
+    }
+
+    .desktop-donate-wish-top > * {
+        flex: 1 1 300px
+    }
+
+    .desktop-donate-wish-top p {
+        max-width: 700px;
+    }
+
+    .desktop-donate-wish-cta {
+        flex-direction: row;
+        gap: 4rem;
+    }
+
+    .desktop-donate-wish-cta a:hover {
+        background-color: #cc0000;
+        color: #ffff00;
+    }
+
+}

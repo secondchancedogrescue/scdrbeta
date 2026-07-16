@@ -1,0 +1,104 @@
+@media (min-width: 640px) {
+    
+    .desktop-home {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .desktop-home-nonprofit {
+        margin-top: 8rem;
+        
+    }
+
+    .desktop-home-forever {
+        max-width: 600px;
+        font-size: 3rem;
+        line-height: 3.5rem;
+    }
+
+    .desktop-home-hero-p {
+        max-width: 600px;
+        font-size: 1.25rem;
+    }
+
+    .desktop-home-hero-cta {
+        flex-direction: row;
+        align-items: center;
+        max-width: 600px;
+    }
+
+    .desktop-home-hero-button {
+        margin: 3rem 2rem 4rem 2rem;
+        width: 14rem;
+        padding: 1rem 2rem;
+    }
+
+    .desktop-home-hero-button:hover, .desktop-home-feature-button:hover {
+        background-color: #0000cc;
+        color: #ffff00;
+    }
+    
+    .desktop-home-adoption {
+        margin: 3rem auto;
+    }
+
+    .desktop-home-adoption-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+    }
+
+    .desktop-home-adoption-box {
+        margin: 3rem 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 1rem;
+    }
+
+    .desktop-home-adoption-h3 {
+        min-height: 100px;
+    }
+
+    .desktop-home-adoption-arrow-container {
+        top: 50%;
+        left: -1rem;
+        transform: translateY(-50%);
+    }
+
+    .desktop-home-adoption-step-1 {
+        display: none;
+    }
+
+    .desktop-home-adoption-arrow {
+        transform: rotate(-90deg);        
+    }
+
+    .desktop-home-feature-card {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .desktop-home-feature-card > * {
+        flex: 1 1 0;
+        min-width: 200px;
+    }
+
+    .desktop-home-feature-card img:hover {
+        transform: scale(1.15);
+    }
+
+    .desktop-home-donation {
+        background: none;
+        background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
+        background-repeat: repeat;
+        background-color: #faffff;
+        background-blend-mode: overlay;
+    }
+
+    .desktop-home-blue-button:hover {
+        background-color: #cc0000;
+        color: #ffff00;
+    }
+
+}
