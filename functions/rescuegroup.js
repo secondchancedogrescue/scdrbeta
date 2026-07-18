@@ -18,7 +18,7 @@ export async function onRequest(context) {
   const newResponse = new Response(JSON.stringify(data), {
     headers: {
       "Content-Type": "application/json",
-      "Cache-Control": "public, s-maxage=14400, max-age=60"
+      "Cache-Control": "public, s-maxage=60, max-age=10"
     }
   });
 
