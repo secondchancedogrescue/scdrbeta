@@ -1,5 +1,11 @@
 export async function onRequest(context) {
-  const { env } = context;
+  const { env, request } = context;
+  const cache = caches.default;
+
+  const cachedResponse = await cache.match(request);
+  if (cachedResponse) {
+    return cachedResponse;
+  }
 
   const response = await fetch(env.RG_ENDPT_URL, {
     headers: {
@@ -9,5 +15,14 @@ export async function onRequest(context) {
 
   const data = await response.json();
 
-  return Response.json(data);
+  const newResponse = new Response(JSON.stringify(data), {
+    headers: {
+      "Content-Type": "application/json",
+      "Cache-Control": "public, s-maxage=14400, max-age=60"
+    }
+  });
+
+  context.waitUntil(cache.put(request, newResponse.clone()));
+
+  return newResponse;
 }
