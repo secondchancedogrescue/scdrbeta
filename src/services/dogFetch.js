@@ -11,7 +11,7 @@ export const getAllDogs = async () => {
     return cachedDogs;
   }
 
-  const response = await axios.get("/api/rescuegroup");
+  const response = await axios.get("/rescuegroup");
 
   const dogs = response.data.data;
 
