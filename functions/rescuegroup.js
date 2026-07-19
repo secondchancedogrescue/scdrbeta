@@ -2,10 +2,14 @@ export async function onRequest(context) {
   const { env, request } = context;
   const cache = caches.default;
 
-  const cachedResponse = await cache.match(request);
-  if (cachedResponse) {
-    return cachedResponse;
-  }
+  const cacheKey = new Request(
+    new URL("/rescuegroup", request.url),
+    { method: "GET" }
+  );
+
+  const cachedResponse = await cache.match(cacheKey);
+
+  if (cachedResponse) return cachedResponse;
 
   const response = await fetch(env.RG_ENDPT_URL, {
     headers: {
@@ -13,16 +17,20 @@ export async function onRequest(context) {
     },
   });
 
-  const data = await response.json();
+  if (!response.ok) {
+    return response;
+  }
 
-  const newResponse = new Response(JSON.stringify(data), {
+  const newResponse = new Response(response.body, {
     headers: {
       "Content-Type": "application/json",
-      "Cache-Control": "public, s-maxage=60, max-age=10"
-    }
+      "Cache-Control": "public, max-age=60",
+    },
   });
 
-  context.waitUntil(cache.put(request, newResponse.clone()));
+  context.waitUntil(
+    cache.put(cacheKey, newResponse.clone())
+  );
 
   return newResponse;
 }
