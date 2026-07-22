@@ -18,6 +18,7 @@ export async function onRequest(context) {
   });
 
   if (!response.ok) {
+    console.log(response.statusText);
     return response;
   }
 
