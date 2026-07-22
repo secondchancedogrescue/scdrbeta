@@ -28,9 +28,9 @@ export async function onRequest(context) {
     },
   });
 
-  context.waitUntil(
+ /*  context.waitUntil(
     cache.put(cacheKey, newResponse.clone())
-  );
+  ); */
 
   return newResponse;
 }
