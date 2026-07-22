@@ -1,15 +1,15 @@
 export async function onRequest(context) {
   const { env, request } = context;
-  const cache = caches.default;
+//  const cache = caches.default;
 
-  const cacheKey = new Request(
+/*  const cacheKey = new Request(
     new URL("/rescuegroup", request.url),
     { method: "GET" }
   );
 
   const cachedResponse = await cache.match(cacheKey);
 
-  if (cachedResponse) return cachedResponse;
+  if (cachedResponse) return cachedResponse; */
 
   const response = await fetch(env.RG_ENDPT_URL, {
     headers: {
