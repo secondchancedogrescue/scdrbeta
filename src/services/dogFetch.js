@@ -11,8 +11,24 @@ export const getAllDogs = async () => {
     return cachedDogs;
   }
 
-  const response = await axios.get("/rescuegroup");
+  let response;
+  
+  try {
+    response = await axios.get("/rescuegroup");
+  } catch (err) {
+    if (err.response?.status === 520 ) {
+      console.log("Retrying rescuegroup after 520");
+      await new Promise((resolve) => setTimeout(resolve, 300));
 
+      try {
+        response = await axios.get("/rescuegroup");
+      } catch (retryErr) {
+        console.error("Retry Failed:", retryErr.resoponse?.status);
+        throw retryErr;
+      }
+    } else { throw Err; }
+  }
+  
   const dogs = response.data.data;
 
   const processedDogs = dogs.map((dog) => {
