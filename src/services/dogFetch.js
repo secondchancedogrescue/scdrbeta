@@ -26,7 +26,7 @@ export const getAllDogs = async () => {
         console.error("Retry Failed:", retryErr.resoponse?.status);
         throw retryErr;
       }
-    } else { throw Err; }
+    } else { throw err; }
   }
   
   const dogs = response.data.data;
