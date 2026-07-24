@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import '../css/header.css';
+import { navItems } from '../data/navigation';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,14 +16,6 @@ const Header = () => {
     };
 
   }, [isOpen]);
-
-  const navItems = [
-    { to: "/", label: "Home" },
-    { to: "/dogs", label: "Available Dogs" },
-    { to: "/volunteer", label: "Volunteer" },
-    { to: "/us", label: "About Us" },
-    { to: "/donate", label: "Donate" },
-  ];
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -55,7 +48,7 @@ const Header = () => {
 
         <nav className={`${isOpen ? 'tw-flex' : 'tw-hidden'} tw-absolute tw-top-full tw-w-full tw-left-0 tw-overflow-y-auto tw-flex-col tw-items-start tw-text-3xl tw-bg-[#fffafa] tw-gap-6 tw-pt-8 tw-h-[calc(100vh-64px)] md:hidden`}>
           {navItems.map(({ to, label }) => (
-            <NavLink key={to} to={to} end onClick={() => {setIsOpen(false); scrollToTop()} } className={({ isActive }) => `tw-block tw-w-full tw-pl-8 tw-py-4 tw-transition-colors ${isActive ? "tw-bg-[#cd1c18] tw-text-[#fffafa]" : "hover:tw-bg-[#f2f2f2] hover:tw-text-[#cd1c18]"}`}>
+            <NavLink key={to} to={to} end onClick={() => { setIsOpen(false); scrollToTop() }} className={({ isActive }) => `tw-block tw-w-full tw-pl-8 tw-py-4 tw-transition-colors ${isActive ? "tw-bg-[#cd1c18] tw-text-[#fffafa]" : "hover:tw-bg-[#f2f2f2] hover:tw-text-[#cd1c18]"}`}>
               {label}
             </NavLink>
           ))}
