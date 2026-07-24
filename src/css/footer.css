@@ -1,7 +1,7 @@
 @media (min-width: 640px) {
     .footer {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         max-width: 1200px;
         margin: 0 auto;
         gap: 8rem;
@@ -10,21 +10,26 @@
 
     .footer-1 {
         max-width: 1200px;
-        margin: 0 auto;
+        margin: 2rem auto 0;
     }
 
     .footer-logo {
         order: 0;
     }
 
+    .footer-explorer {
+        margin-top: 6px;
+        order: 1;
+    }
+
     .footer-substack {
         margin-top: 6px;
-        order: 2;
+        order: 3;
     }
 
     .footer-social {
         margin-top: 6px;
-        order: 1;
+        order: 2;
         
     }
 
