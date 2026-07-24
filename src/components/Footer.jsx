@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopyright } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram, faFacebookF, faTiktok } from '@fortawesome/free-brands-svg-icons';
 import '../css/footer.css';
+import logo from '../assets/SCDR_logo.png';
 import { navItems } from '../data/navigation';
 
 const Footer = () => {
