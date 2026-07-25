@@ -21,10 +21,10 @@ const Header = () => {
 
   return (
     <header className={`tw-bg-[#fffafa] tw-text-[#cd1c18] tw-fixed tw-top-0 tw-left-0 tw-w-full tw-z-20`}>
-      <div className='desktop-nav tw-flex tw-items-center tw-justify-between tw-px-4 tw-py-4'>
+      <div className='desktop-nav tw-flex tw-items-stretch tw-justify-between tw-pl-4'>
 
         {/*Logo and Name*/}
-        <div className='tw-flex tw-items-center'>
+        <div className='tw-flex tw-items-center tw-py-4'>
           <img className='tw-h-10 tw-w-8 tw-mt-2 tw-mb-1 tw-mr-3' src='https://secondchancedogrescue.org/wp-content/uploads/2020/01/logo.png' alt='' />
           <div>
             <p>Second Chance</p>
@@ -33,12 +33,18 @@ const Header = () => {
         </div>
 
         {/*Desktop Nav*/}
-        <nav className='tw-hidden md:tw-flex tw-gap-6'>
-          {navItems.map(({ to, label }) => (
-            <NavLink key={to} to={to} end onClick={scrollToTop} className={({ isActive }) => `tw-rounded-full tw-px-4 tw-py-2 tw-transition-colors ${isActive ? "tw-bg-[#cd1c18] tw-text-[#fffafa]" : "tw-text-[#cd1c18] hover:tw-bg-[#f2f2f2]"}`}>
-              {label}
-            </NavLink>
-          ))}
+        <nav className='tw-hidden md:tw-flex tw-items-center'>
+          <div className='tw-flex tw-gap-6'>
+            {navItems.filter(({ to }) => to !== '/donate').map(({ to, label }) => (
+              <NavLink key={to} to={to} end onClick={scrollToTop} className={({ isActive }) => `tw-rounded-full tw-px-4 tw-py-2 tw-transition-colors ${isActive ? "tw-bg-[#cd1c18] tw-text-[#fffafa]" : "tw-text-[#cd1c18] hover:tw-bg-[#f2f2f2]"}`}>
+                {label}
+              </NavLink>
+            ))}
+          </div>
+          <NavLink to='/donate' onClick={scrollToTop}
+            className={({ isActive }) => `tw-transition-colors ${isActive ? "tw-bg-[#cc0000] tw-text-[#fffafa]" : "tw-text-[#fffafa] tw-bg-[#1D4ED8] hover:tw-bg-[#b31916]"} tw-ml-8 tw-self-stretch tw-flex tw-items-center tw-justify-center tw-px-8 tw-uppercase tw-tracking-[0.2rem]`}>
+            Donate
+          </NavLink>
         </nav>
 
         {/*Mobile Nav*/}
