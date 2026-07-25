@@ -49,7 +49,7 @@ const Header = () => {
         </nav>
 
         {/*Mobile Nav*/}
-        <button className='md:hidden tw-z-20' onClick={() => setIsOpen(!isOpen)}>
+        <button className='md:hidden tw-z-20 tw-pr-4' onClick={() => setIsOpen(!isOpen)}>
           <FontAwesomeIcon icon={faBars} className='tw-text-3xl' />
         </button>
 
