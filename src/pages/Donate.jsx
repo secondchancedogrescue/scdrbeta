@@ -35,7 +35,7 @@ const Donate = () => {
   }, [])
 
   return (
-    <div className='tw-mt-24'>
+    <div className='desktop-donate-bg tw-mt-24'>
       {/* Hero */}
       <div className='tw-py-4 tw-bg-[#cc0000]'>
         <div className='desktop-donate tw-mx-4'>

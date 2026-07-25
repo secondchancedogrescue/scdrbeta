@@ -1,4 +1,8 @@
 @media (min-width: 640px) {
+    .desktop-donate-bg {
+        margin: 0;
+    }
+    
     .desktop-donate, .desktop-donate-ways {
         max-width: 1200px;
         margin: 0 auto;
