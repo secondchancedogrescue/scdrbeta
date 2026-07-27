@@ -11,6 +11,8 @@ export const getAllDogs = async () => {
     return cachedDogs;
   }
 
+  let response;
+
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
       return await axios.get("/rescuegroup");
