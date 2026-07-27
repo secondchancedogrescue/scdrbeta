@@ -5,7 +5,7 @@ import '../css/volunteer.css';
 import { useModal } from '../components/ModalContext';
 
 const Volunteer = () => {
-  const {handleOpenCal} = useModal();
+  const { handleOpenCal } = useModal();
 
   return (
     <div>
@@ -77,6 +77,9 @@ const Volunteer = () => {
           </h1>
           <p className='tw-font-light tw-text-lg tw-mt-6'>
             Find the perfect way to contribute your time and talents
+          </p>
+          <p className='tw-font-light tw-text-lg tw-mt-6'>
+            Note: Volunteers must be 18+
           </p>
 
           <div className='desktop-vol-volunteer'>

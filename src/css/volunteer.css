@@ -1,7 +1,10 @@
 @media (min-width: 640px) {
-    .desktop-vol-hero, .desktop-vol-foster {
+
+    .desktop-vol-hero,
+    .desktop-vol-foster {
         max-width: 1200px;
         margin: 0 auto;
+        padding-inline: 1rem;
     }
 
     .desktop-vol-hero h1 {
@@ -39,7 +42,7 @@
         align-items: center;
         margin-bottom: 3rem;
     }
-    
+
     .desktop-vol-foster p {
         max-width: 600px;
     }

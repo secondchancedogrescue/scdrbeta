@@ -11,22 +11,19 @@ export const getAllDogs = async () => {
     return cachedDogs;
   }
 
-  let response;
-  
-  try {
-    response = await axios.get("/rescuegroup");
-  } catch (err) {
-    if (err.response?.status === 520 ) {
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      return await axios.get("/rescuegroup");
+    } catch (err) {
+      // If it's NOT a 520, or we've already retried once, stop.
+      if (err.response?.status !== 520 || attempt === 1) {
+        throw err;
+      }
+
+      // Only reaches here for the first 520.
       console.log("Retrying rescuegroup after 520");
       await new Promise((resolve) => setTimeout(resolve, 300));
-
-      try {
-        response = await axios.get("/rescuegroup");
-      } catch (retryErr) {
-        console.error("Retry Failed:", retryErr.resoponse?.status);
-        throw retryErr;
-      }
-    } else { throw err; }
+    }
   }
   
   const dogs = response.data.data;
