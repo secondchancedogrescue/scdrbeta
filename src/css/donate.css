@@ -2,10 +2,12 @@
     .desktop-donate-bg {
         margin: 0;
     }
-    
-    .desktop-donate, .desktop-donate-ways {
+
+    .desktop-donate,
+    .desktop-donate-ways {
         max-width: 1200px;
         margin: 0 auto;
+        padding-inline: 1rem;
     }
 
     .desktop-donate-hero {
@@ -48,7 +50,7 @@
         gap: 2rem;
     }
 
-    .desktop-donate-wish-top > * {
+    .desktop-donate-wish-top>* {
         flex: 1 1 300px
     }
 
