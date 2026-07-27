@@ -1,5 +1,5 @@
 @media (min-width: 640px) {
-    
+
     .desktop-home {
         max-width: 1200px;
         margin: 0 auto;
@@ -7,7 +7,7 @@
 
     .desktop-home-nonprofit {
         margin-top: 8rem;
-        
+
     }
 
     .desktop-home-forever {
@@ -33,11 +33,12 @@
         padding: 1rem 2rem;
     }
 
-    .desktop-home-hero-button:hover, .desktop-home-feature-button:hover {
+    .desktop-home-hero-button:hover,
+    .desktop-home-feature-button:hover {
         background-color: #0000cc;
         color: #ffff00;
     }
-    
+
     .desktop-home-adoption {
         margin: 3rem auto;
     }
@@ -52,11 +53,20 @@
         margin: 3rem 0;
         padding-top: 0;
         padding-bottom: 0;
-        padding-left: 1rem;
+        padding-left: 0.5rem;
     }
 
     .desktop-home-adoption-h3 {
         min-height: 100px;
+    }
+
+    .desktop-home-adoption-h3 h3 {
+        font-size: 1.3rem;
+        line-height: 1.8rem
+    }
+
+    .desktop-home-adoption-h3 svg {
+        font-size: 2.5rem;
     }
 
     .desktop-home-adoption-arrow-container {
@@ -70,7 +80,7 @@
     }
 
     .desktop-home-adoption-arrow {
-        transform: rotate(-90deg);        
+        transform: rotate(-90deg);
     }
 
     .desktop-home-feature-card {
@@ -79,7 +89,7 @@
         gap: 2rem;
     }
 
-    .desktop-home-feature-card > * {
+    .desktop-home-feature-card>* {
         flex: 1 1 0;
         min-width: 200px;
     }
