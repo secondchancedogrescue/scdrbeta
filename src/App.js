@@ -9,6 +9,7 @@ import About from "./pages/About.jsx";
 import Donate from "./pages/Donate.jsx";
 import DogDeets from "./pages/DogDeets.jsx";
 import { ModalProvider } from "./components/ModalContext.jsx";
+import Privacy from "./pages/Privacy.jsx";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/volunteer" element={<Volunteer />} />
             <Route path="/us" element={<About />} />
             <Route path="/donate" element={<Donate />} />
+            <Route path="/privacy" element={<Privacy />} />
           </Routes>
         </main>
         <Footer />
