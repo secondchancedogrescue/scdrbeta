@@ -1,0 +1,7 @@
+@media (min-width: 640px) {
+    .desktop-privacy {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-inline: 1rem;
+    }
+}
