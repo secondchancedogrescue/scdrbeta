@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import '../css/privacy.css';
 
 const Privacy = () => {
     return (
@@ -106,7 +107,7 @@ const Privacy = () => {
                     4284 Cass Street <br />
                     San Diego, CA 92109 <br />
                 </p>
-                <p className='tw-my-2'>
+                <p className='tw-mt-2 tw-mb-14'>
                     You can also send an email to info@secondchancedogrescue.org
                 </p>
             </div>
