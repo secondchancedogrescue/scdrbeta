@@ -39,16 +39,20 @@ const Footer = () => {
           ))}
         </div>
 
-        {/* Newsletter links */}
+        {/* Resources links */}
         <div className='footer-substack tw-flex tw-flex-col tw-mt-6 tw-mx-3'>
           <p className='tw-text-[#1591ea] tw-text-sm'>RESOURCES</p>
-          <a className='tw-my-2 tw-px-1 tw-py-1 hover:tw-text-[#cc0000] hover:tw-bg-white' href="https://2ndchancedogrescue.substack.com" target='_blank' rel='noopener noreferrer'>
+          <a className='tw-mt-2 tw-px-1 tw-py-1 hover:tw-text-[#cc0000] hover:tw-bg-white' href="https://2ndchancedogrescue.substack.com" target='_blank' rel='noopener noreferrer'>
             Our Substack
           </a>
-          <a className='tw-px-1 tw-py-1 hover:tw-text-[#cc0000] hover:tw-bg-white'
+          <a className='tw-mt-2 tw-px-1 tw-py-1 hover:tw-text-[#cc0000] hover:tw-bg-white'
             href="https://www.paypal.com/donate/?hosted_button_id=XPTRRJU3PLLPN" target="_blank" rel="noopener noreferrer">
             Adoption Fee
           </a>
+          <Link to='/privacy' onClick={scrollToTop}
+            className='tw-mt-2 tw-px-1 tw-py-1 hover:tw-text-[#cc0000] hover:tw-bg-white'>
+            Privacy Policy
+          </Link>
         </div>
 
         {/* Social Media */}
