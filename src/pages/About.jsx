@@ -33,9 +33,9 @@ const About = () => {
         </div>
 
         <div className='about-moving-border tw-mx-4 tw-p-2 tw-mb-10'>
-          <h3 className='tw-font-bold tw-text-xl tw-mt-3 tw-mb-2'>
+          <h2 className='tw-font-bold tw-text-2xl tw-mb-2'>
             Why <span className='tw-text-[#cd1c18]'>Foster</span>
-          </h3>
+          </h2>
           <p className='tw-font-light tw-mb-1'>
             Because we do not operate a traditional shelter, every dog we save is welcomed into a foster home.
           </p>
@@ -72,7 +72,7 @@ const About = () => {
         </div>
 
         <div className='about-moving-border tw-mx-4 tw-p-2 tw-mb-10'>
-          <h3 className='tw-font-bold tw-text-xl tw-mt-3 tw-mb-2'>
+          <h3 className='tw-font-bold tw-text-2xl tw-mb-2'>
             Where We <span className='tw-text-[#cd1c18]'>Rescue</span>
           </h3>
           <p>
@@ -90,6 +90,16 @@ const About = () => {
               Baja California, Mexico
             </p>
           </div>
+        </div>
+      </div>
+
+      <div className='tw-flex tw-flex-col tw-items-center'>
+        <h1 className='tw-font-bold tw-text-4xl tw-mt-4'>
+          Visit <span className='tw-text-[#cd1c18]'>Us</span>
+        </h1>
+        <div className='tw-my-14 tw-w-full'>
+          <iframe className='tw-w-full tw-h-[350px]' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.927617005219!2d-117.25360382433662!3d32.794178473656444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d95363ace523f9%3A0x7f795cf1250684a0!2sSecond%20Chance%20Dog%20Rescue!5e0!3m2!1sen!2sus!4v1785304134120!5m2!1sen!2sus"
+            style={{ border: 0 }} allowFullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="SCDR Location"></iframe>
         </div>
       </div>
     </section>
