@@ -15,11 +15,15 @@ export const getAllDogs = async () => {
 
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
+      console.log(`Attempt ${attempt + 1}`);
       response = await axios.get("/api/rescuegroup");
       break;
     } catch (err) {
+      console.log("Failed", attempt + 1, err.response?.status, err.code);
+
       // If it's NOT a 520, or we've already retried once, stop.
       if (err.response?.status !== 520 || attempt === 1) {
+        console.log("Not retrying");
         throw err;
       }
 
