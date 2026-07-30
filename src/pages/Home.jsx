@@ -9,6 +9,8 @@ import '../css/home.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { useModal } from '../components/ModalContext';
+import DogCard from '../components/DogCard';
+import SkeletonCard from '../components/SkeletonCard';
 
 const Home = () => {
   const [dogs, setDogs] = useState([]);
@@ -24,31 +26,6 @@ const Home = () => {
   }, [])
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  if (loading) {
-    return <div>Loading...</div>
-  }
-
-  const DogCard = ({ pictureThumbnailUrl, name, breedPrimary, sex, ageString, id }) => (
-    <div className='tw-rounded-lg tw-overflow-hidden tw-h-[420px] tw-bg-[#faffff] tw-relative'>
-
-      {pictureThumbnailUrl && (
-        <img src={pictureThumbnailUrl} alt="" className='tw-w-full tw-h-full tw-object-cover tw-overflow-hidden' />
-      )}
-
-      <div className='tw-absolute tw-bottom-0 tw-left-0 tw-right-0 tw-p-3 tw-flex tw-flex-col tw-items-start tw-bg-[#faffff]/90'>
-        <h2 className='tw-text-2xl tw-font-semibold tw-text-[#cd1c18]'>
-          {name}
-        </h2>
-        <p>{sex}</p>
-        <p>{breedPrimary}</p>
-        <p>{ageString}</p>
-        <Link className='desktop-home-blue-button tw-text-[#ffff00] tw-py-1 tw-px-3 tw-bg-[#0000cc] tw-rounded-full tw-mt-2' to={`/dogs/${id}`} onClick={scrollToTop}>
-          Learn More
-        </Link>
-      </div>
-    </div>
-  )
 
   return (
     <main >
@@ -72,23 +49,40 @@ const Home = () => {
             <div>
               <div className='tw-pt-8 tw-flex tw-flex-col tw-items-center'>
 
-                {/* Carousel */}
-                <div className='tw-h-[428px] tw-w-full sm:tw-hidden'>
-                  <Swiper slidesPerView={1.15} centeredSlides={true} spaceBetween={16} >
-                    {dogs.map((dog) => (
-                      <SwiperSlide key={dog.id}  >
-                        <DogCard id={dog.id} {...dog.attributes} />
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                </div>
+                {loading ? (
+                  <>
+                    {/* Mobile Loading */}
+                    <div className="tw-h-[428px] tw-w-full sm:tw-hidden">
+                      <SkeletonCard />
+                    </div>
 
-                {/* Desktop */}
-                <div className='tw-hidden desktop-home-feature-card'>
-                  {dogs.map((dog) => (
-                    <DogCard key={dog.id} id={dog.id} {...dog.attributes} />
-                  ))}
-                </div>
+                    {/* Desktop Loading */}
+                    <div className="tw-hidden desktop-home-feature-card">
+                      {[...Array(3)].map((_, i) => (<SkeletonCard key={i} />
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {/* Carousel */}
+                    <div className='tw-h-[428px] tw-w-full sm:tw-hidden'>
+                      <Swiper slidesPerView={1.15} centeredSlides={true} spaceBetween={16} >
+                        {dogs.map((dog) => (
+                          <SwiperSlide key={dog.id}  >
+                            <DogCard id={dog.id} {...dog.attributes} buttonClassName='desktop-home-blue-button' onLearnMore={scrollToTop} />
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                    </div>
+
+                    {/* Desktop */}
+                    <div className='tw-hidden desktop-home-feature-card'>
+                      {dogs.map((dog) => (
+                        <DogCard key={dog.id} id={dog.id} {...dog.attributes} buttonClassName='desktop-home-blue-button' onLearnMore={scrollToTop} />
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
 

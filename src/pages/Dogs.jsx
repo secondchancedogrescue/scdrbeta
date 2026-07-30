@@ -5,19 +5,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter, faSort } from '@fortawesome/free-solid-svg-icons';
 import '../css/dogs.css';
 import DogCard from '../components/DogCard';
+import SkeletonCard from '../components/SkeletonCard';
 
 const Dogs = () => {
   const [dogs, setDogs] = useState([]);
   const [filterSex, setFilterSex] = useState('All');
   const [sortBy, setSortBy] = useState('AZ');
   const introRef = useRef(null);
+  const [loading, setLoading] = useState(true);
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   useEffect(() => {
     const fetchDogs = async () => {
-      const data = await getAllDogs();
-      setDogs(data);
+      setLoading(true);
+
+      try {
+        const data = await getAllDogs();
+        setDogs(data);
+      } catch (error) {
+        console.error("Failed to fetch dogs:", error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchDogs();
@@ -101,16 +111,23 @@ const Dogs = () => {
 
 
         {/* Available dogs */}
-        <div className='desktop-adoptable desktop-adoptable-roster tw-mb-6'>
-          {processedDogs.map((dog) => {
-            const { id, attributes } = dog;
-            const { pictureThumbnailUrl, name, breedPrimary, sex, ageString } = attributes;
-
-            return (
-              <DogCard key={id} id={id} pictureThumbnailUrl={pictureThumbnailUrl} name={name} breedPrimary={breedPrimary} sex={sex}
-                ageString={ageString} imageClassName='desktop-adoptable-photo' buttonClassName='desktop-dog-blue-button' onLearnMore={scrollToTop} />
-            );
-          })}
+        <div className="desktop-adoptable desktop-adoptable-roster tw-mb-6">
+          {loading ? (
+            [...Array(6)].map((_, i) => (
+              <SkeletonCard key={i} />
+            ))
+          ) : (
+            processedDogs.map((dog) => (
+              <DogCard
+                key={dog.id}
+                id={dog.id}
+                {...dog.attributes}
+                imageClassName="desktop-adoptable-photo"
+                buttonClassName="desktop-dog-blue-button"
+                onLearnMore={scrollToTop}
+              />
+            ))
+          )}
         </div>
       </section>
     </main>
