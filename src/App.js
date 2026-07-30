@@ -10,6 +10,7 @@ import Donate from "./pages/Donate.jsx";
 import DogDeets from "./pages/DogDeets.jsx";
 import { ModalProvider } from "./components/ModalContext.jsx";
 import Privacy from "./pages/Privacy.jsx";
+import Notfound from "./pages/Notfound.jsx";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/us" element={<About />} />
             <Route path="/donate" element={<Donate />} />
             <Route path="/privacy" element={<Privacy />} />
+            <Route path="*" element={<Notfound />} />
           </Routes>
         </main>
         <Footer />
