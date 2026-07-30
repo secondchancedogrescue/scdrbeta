@@ -1,10 +1,10 @@
 import React from 'react'
 import { useState, useEffect, useMemo, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { getAllDogs } from '../services/dogFetch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter, faSort } from '@fortawesome/free-solid-svg-icons';
 import '../css/dogs.css';
+import DogCard from '../components/DogCard';
 
 const Dogs = () => {
   const [dogs, setDogs] = useState([]);
@@ -107,22 +107,8 @@ const Dogs = () => {
             const { pictureThumbnailUrl, name, breedPrimary, sex, ageString } = attributes;
 
             return (
-              <div key={id} className='tw-h-[428px] tw-w-full tw-bg-[#faffff] tw-relative'>
-                {pictureThumbnailUrl && (
-                  <img src={pictureThumbnailUrl} alt="" className='desktop-adoptable-photo tw-w-full tw-h-full tw-object-cover tw-overflow-hidden' />
-                )}
-                <div className='tw-absolute tw-bottom-0 tw-left-0 tw-right-0 tw-p-3 tw-flex tw-flex-col tw-items-start tw-bg-[#faffff]/90'>
-                  <h2 className='tw-text-2xl tw-font-semibold tw-text-[#cd1c18]'>
-                    {name}
-                  </h2>
-                  <p>{sex}</p>
-                  <p>{breedPrimary}</p>
-                  <p>{ageString}</p>
-                  <Link className='desktop-dog-blue-button tw-text-[#ffff00] tw-py-1 tw-px-3 tw-bg-[#0000cc] tw-rounded-full tw-mt-2' to={`/dogs/${id}`} onClick={scrollToTop}>
-                    Learn More
-                  </Link>
-                </div>
-              </div>
+              <DogCard key={id} id={id} pictureThumbnailUrl={pictureThumbnailUrl} name={name} breedPrimary={breedPrimary} sex={sex}
+                ageString={ageString} imageClassName='desktop-adoptable-photo' buttonClassName='desktop-dog-blue-button' onLearnMore={scrollToTop} />
             );
           })}
         </div>
