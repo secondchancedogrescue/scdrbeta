@@ -4,7 +4,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 const SkeletonCard = ({ className = '' }) => {
     return (
-        <div className="tw-h-[428px] tw-w-full tw-relative">
+        <div className="tw-h-[428px] tw-w-[300px] tw-mx-auto tw-relative">
             <div className='tw-w-[300px] tw-h-full'>
                 <Skeleton height='100%' />
             </div>
