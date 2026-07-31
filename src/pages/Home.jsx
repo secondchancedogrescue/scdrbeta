@@ -46,7 +46,7 @@ const Home = () => {
             </p>
 
             {/* Featured Dogs */}
-            <div>
+            <div className='tw-flex tw-justify-center'>
               <div className='tw-pt-8 tw-flex tw-flex-col tw-items-center'>
 
                 {loading ? (
