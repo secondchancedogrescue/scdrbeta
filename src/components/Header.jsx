@@ -30,6 +30,7 @@ const Header = () => {
           <div>
             <p>Second Chance</p>
             <p className='tw-text-xs tw-text-[#878787]'>DOG RESCUE</p>
+            <p className='tw-text-[.7rem] tw-text-[#878787]'>San Diego, CA</p>
           </div>
         </div>
 
