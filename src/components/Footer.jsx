@@ -74,8 +74,8 @@ const Footer = () => {
           </div>
           <div className='tw-mt-3 tw-mb-8'>
             <p className='tw-text-[#1591ea]'>San Diego, California</p>
-            <p className='tw-text-sm tw-text-[#1591ea]'>info@secondchancedogrescue.org</p>
             <p className='tw-text-sm tw-text-[#1591ea]'>619.721.3647 (DOGS)</p>
+            <p className='tw-text-sm tw-text-[#1591ea]'>info@secondchancedogrescue.org</p>
           </div>
         </div>
       </div>
