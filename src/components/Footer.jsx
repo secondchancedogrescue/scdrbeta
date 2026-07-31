@@ -18,10 +18,11 @@ const Footer = () => {
         {/* Logo and Name*/}
         <div className='footer-logo tw-flex tw-flex-col tw-mx-3'>
           <div className='tw-flex tw-items-center'>
-            <img className='tw-h-12 tw-w-10 tw-mt-2 tw-mb-1 tw-mr-3' src='https://secondchancedogrescue.org/wp-content/uploads/2020/01/logo.png' alt='' />
+            <img className='tw-h-16 tw-w-14 tw-mt-2 tw-mb-1 tw-mr-3' src='https://secondchancedogrescue.org/wp-content/uploads/2020/01/logo.png' alt='' />
             <div className='tw-flex tw-flex-col tw-mt-2 tw-mb-1'>
               <p className='tw-mt-0'>Second Chance</p>
               <p className='tw-text-[#1591ea] tw-text-sm'>DOG RESCUE</p>
+              <p className='tw-text-[#1591ea] tw-text-xs'>San Diego, CA</p>
             </div>
           </div>
           <p className='tw-text-xs tw-text-[#1591ea] tw-mt-1'>A foster-based nonprofit rescuing, <span className='tw-text-[#ffff00]'>rehabilitating,</span> and re-homing dogs in San Diego.</p>
@@ -74,6 +75,7 @@ const Footer = () => {
           <div className='tw-mt-3 tw-mb-8'>
             <p className='tw-text-[#1591ea]'>San Diego, California</p>
             <p className='tw-text-sm tw-text-[#1591ea]'>info@secondchancedogrescue.org</p>
+            <p className='tw-text-sm tw-text-[#1591ea]'>619.721.3647 (DOGS)</p>
           </div>
         </div>
       </div>
