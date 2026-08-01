@@ -43,15 +43,18 @@
 }
 
 @media (min-width: 640px) {
-    .desktop-about {
+
+    .desktop-about,
+    .desktop-visit,
+    .desktop-who-we-are {
         max-width: 1200px;
         margin: 0 auto;
-        padding-inline: 1rem;
     }
 
     .desktop-about-mission {
         max-width: 600px;
         margin: 0;
+        padding-inline: 1rem;
     }
 
     .desktop-about-mission-h1 {
@@ -72,5 +75,32 @@
 
     .desktop-about-cards div {
         max-width: 400px;
+    }
+
+    .desktop-who-we-are-content {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        font-size: 1.5rem;
+        width: 60%;
+    }
+
+    .desktop-who-we-are-card {
+        box-shadow: 10px 10px 15px #244ed8;
+    }
+
+    .desktop-who-we-are-content h2 {
+        font-size: 2.25rem;
+        padding-bottom: 1rem;
+    }
+
+    .desktop-who-we-are-content .tw-grid {
+        grid-template-columns: 20rem 1fr;
+    }
+
+    .desktop-visit div,
+    .desktop-visit h2,
+    .desktop-visit p {
+        margin-left: 0.5rem;
     }
 }
