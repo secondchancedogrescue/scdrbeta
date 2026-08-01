@@ -47,7 +47,7 @@ const Home = () => {
 
             {/* Featured Dogs */}
             <div className='tw-flex tw-justify-center'>
-              <div className='tw-pt-8 tw-flex tw-flex-col tw-items-center'>
+              <div className='tw-pt-8 tw-flex tw-flex-col tw-items-center tw-w-full'>
 
                 {/* Mobile - stays mounted */}
                 <div className="tw-h-[428px] tw-w-full sm:tw-hidden">
