@@ -1,6 +1,8 @@
 @keyframes borderFlow {
-    100% { transform: rotate(360deg); }
-    
+    100% {
+        transform: rotate(360deg);
+    }
+
 }
 
 .about-moving-border {
@@ -17,13 +19,11 @@
     position: absolute;
     inset: -50%;
     z-index: 0;
-    background: linear-gradient(
-        90deg,
-        #0000cc,
-        #faffff,
-        #cc0000,
-        #ffff00
-    );
+    background: linear-gradient(90deg,
+            #0000cc,
+            #faffff,
+            #cc0000,
+            #ffff00);
 
     animation: borderFlow 12s linear infinite;
 }
@@ -37,7 +37,7 @@
     z-index: 1;
 }
 
-.about-moving-border > * {
+.about-moving-border>* {
     position: relative;
     z-index: 2;
 }
@@ -46,10 +46,12 @@
     .desktop-about {
         max-width: 1200px;
         margin: 0 auto;
+        padding-inline: 1rem;
     }
 
     .desktop-about-mission {
         max-width: 600px;
+        margin: 0;
     }
 
     .desktop-about-mission-h1 {
