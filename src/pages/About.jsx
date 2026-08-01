@@ -8,8 +8,8 @@ const About = () => {
   const { handleOpenCal } = useModal();
 
   return (
-    <section className='desktop-about'>
-      <div className='desktop-about-mission tw-mx-4'>
+    <section className='desktop-about tw-mx-4'>
+      <div className='desktop-about-mission'>
         <div className='desktop-about-mission-h1 tw-flex tw-flex-col tw-items-center'>
           <FontAwesomeIcon icon={faCompass} className='tw-text-[#cd1c18] tw-mt-24 tw-text-4xl' />
           <h1 className='tw-font-bold tw-text-4xl tw-mt-4'>
