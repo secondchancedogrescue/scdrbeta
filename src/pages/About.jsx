@@ -1,9 +1,12 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCompass, faEarthAmerica, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faCompass, faEarthAmerica, faLocationDot, faStreetView, faPhone, faReply } from '@fortawesome/free-solid-svg-icons';
 import '../css/about.css';
+import { useModal } from '../components/ModalContext';
 
 const About = () => {
+  const { handleOpenCal } = useModal();
+
   return (
     <section className='desktop-about'>
       <div className='desktop-about-mission tw-mx-4'>
@@ -14,7 +17,7 @@ const About = () => {
           </h1>
         </div>
         <p className='desktop-about-mission-p tw-font-light tw-my-4'>
-          Second Chance Dog Rescue is a 501(c)(3) nonprofit dedicated to rescuing, rehabilitating, and re-homing dogs through a network of foster families.
+          SCDR Inc. dba Second Chance Dog Rescue is a 501(c)(3) nonprofit dedicated to rescuing, rehabilitating, and re-homing dogs through a network of foster families.
           We provide medical care, love, and support so every dog gets a true second chance.
         </p>
       </div>
@@ -93,10 +96,37 @@ const About = () => {
         </div>
       </div>
 
-      <div className='tw-flex tw-flex-col tw-items-center'>
-        <h1 className='tw-font-bold tw-text-4xl tw-mt-4'>
+      <div className='tw-flex tw-flex-col '>
+        <h1 className='tw-font-bold tw-text-4xl tw-mt-4 tw-text-center'>
           Visit <span className='tw-text-[#cd1c18]'>Us</span>
         </h1>
+        <div className='tw-flex tw-items-center tw-mt-4'>
+          <FontAwesomeIcon icon={faStreetView} />
+          <p className='tw-mx-2'>
+            4284 Cass Street San Diego, CA 92109
+          </p>
+        </div>
+        <div className='tw-flex tw-items-center tw-my-1'>
+          <FontAwesomeIcon icon={faPhone} />
+          <p className='tw-mx-2'>
+            619.721.3647 (DOGS)
+          </p>
+        </div>
+        <div className='tw-flex tw-items-center tw-mb-4'>
+          <FontAwesomeIcon icon={faReply} />
+          <p className='tw-mx-2'>
+            info@secondchancedogrescue.org
+          </p>
+        </div>
+        <h2 className='tw-font-bold'>
+          Please Note
+        </h2>
+        <p>
+          Second Chance Dog Rescue does not have a kennel or boarding facility.
+          All of our dogs live in private foster homes while they wait for their forever families, so there are no dogs available to meet our office.
+          If you're interested in meeting one of our dogs, please submit an adoption application online or visit onr of our upcoming adoption{' '}
+          <span onClick={handleOpenCal} className='tw-cursor-pointer tw-text-[#0000cc] hover:tw-underline hover:tw-decoration-[#cc0000] hover:tw-underline-offset-8'>events</span>.
+        </p>
         <div className='tw-my-14 tw-w-full'>
           <iframe className='tw-w-full tw-h-[350px]' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.927617005219!2d-117.25360382433662!3d32.794178473656444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d95363ace523f9%3A0x7f795cf1250684a0!2sSecond%20Chance%20Dog%20Rescue!5e0!3m2!1sen!2sus!4v1785304134120!5m2!1sen!2sus"
             style={{ border: 0 }} allowFullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="SCDR Location"></iframe>
