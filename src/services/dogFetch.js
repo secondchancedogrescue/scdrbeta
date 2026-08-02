@@ -13,7 +13,7 @@ export const getAllDogs = async () => {
 
   let response;
 
-  for (let attempt = 0; attempt < 2; attempt++) {
+  for (let attempt = 0; attempt < 4; attempt++) {
     try {
       console.log(`Attempt ${attempt + 1}`);
       response = await axios.get("/rescuegroup");
@@ -29,7 +29,7 @@ export const getAllDogs = async () => {
 
       // Only reaches here for the first 520.
       console.log("Retrying rescuegroup after 520");
-      await new Promise((resolve) => setTimeout(resolve, 600));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
     }
   }
   
