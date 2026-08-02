@@ -1,6 +1,8 @@
 @keyframes borderFlow {
-    100% { transform: rotate(360deg); }
-    
+    100% {
+        transform: rotate(360deg);
+    }
+
 }
 
 .about-moving-border {
@@ -17,13 +19,11 @@
     position: absolute;
     inset: -50%;
     z-index: 0;
-    background: linear-gradient(
-        90deg,
-        #0000cc,
-        #faffff,
-        #cc0000,
-        #ffff00
-    );
+    background: linear-gradient(90deg,
+            #0000cc,
+            #faffff,
+            #cc0000,
+            #ffff00);
 
     animation: borderFlow 12s linear infinite;
 }
@@ -37,19 +37,25 @@
     z-index: 1;
 }
 
-.about-moving-border > * {
+.about-moving-border>* {
     position: relative;
     z-index: 2;
 }
 
 @media (min-width: 640px) {
-    .desktop-about {
+
+    .desktop-about,
+    .desktop-visit,
+    .desktop-who-we-are-parent,
+    .desktop-who-we-are {
         max-width: 1200px;
         margin: 0 auto;
     }
 
     .desktop-about-mission {
         max-width: 600px;
+        margin: 0;
+        padding-inline: 1rem;
     }
 
     .desktop-about-mission-h1 {
@@ -70,5 +76,32 @@
 
     .desktop-about-cards div {
         max-width: 400px;
+    }
+
+    .desktop-who-we-are-content {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        font-size: 1.5rem;
+        width: 60%;
+    }
+
+    .desktop-who-we-are-card {
+        box-shadow: 10px 10px 15px #244ed8;
+    }
+
+    .desktop-who-we-are-content h2 {
+        font-size: 2.25rem;
+        padding-bottom: 1rem;
+    }
+
+    .desktop-who-we-are-content .tw-grid {
+        grid-template-columns: 20rem 1fr;
+    }
+
+    .desktop-visit div,
+    .desktop-visit h2,
+    .desktop-visit p {
+        margin-left: 0.5rem;
     }
 }

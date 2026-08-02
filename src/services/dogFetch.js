@@ -29,7 +29,7 @@ export const getAllDogs = async () => {
 
       // Only reaches here for the first 520.
       console.log("Retrying rescuegroup after 520");
-      await new Promise((resolve) => setTimeout(resolve, 300));
+      await new Promise((resolve) => setTimeout(resolve, 600));
     }
   }
   

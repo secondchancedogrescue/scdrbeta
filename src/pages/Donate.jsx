@@ -182,6 +182,31 @@ const Donate = () => {
           </div>
         </div>
       </div>
+
+      {/*Thank You*/}
+      <div>
+        <div className='tw-h-1 tw-bg-[#0000cc]/80' />
+        <div className='desktop-donate'>
+          <h1 className='tw-text-center tw-font-bold tw-text-4xl tw-pt-14'><span className='tw-text-[#0000cc]/80'>Your</span> Support Makes a <span className='tw-text-[#cd1c18]'>Difference</span></h1>
+          <div className='tw-mx-2 tw-pt-4 tw-pb-20 tw-space-y-4'>
+            <p>
+              On behalf of every one at <span className='tw-text-[#cc0000]'>Second Chance Dog Rescue</span>.
+              Thank you for supporting our mission.
+              Whether you make a financial donation, purchase supplies from our wishlist, become a monthly supporter, or choose another way to help, your generosity helps give dogs the care, compassion, and second chance they deserve.
+            </p>
+            <p>
+              Your support helps provide medical care, nutritious food, essential supplies, safe transportation, and the resources needed to rescue, rehabilitate, and rehome dogs throuhgout our community.
+            </p>
+            <p className='tw-italic'>
+              SCDR Inc. dba Second Chance Dog Rescue is a registered 501(C)(3) nonprofit organization (EIN: 26-3642128).
+              Donations are tax-deductible to the fullest extent permitted by law.
+            </p>
+            <p className='tw-text-[#0000cc] tw-font-bold'>
+              Thank you for being part of every rescue story.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

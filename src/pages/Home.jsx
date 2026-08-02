@@ -48,41 +48,54 @@ const Home = () => {
 
             {/* Featured Dogs */}
             <div className='tw-flex tw-justify-center'>
-              <div className='tw-pt-8 tw-flex tw-flex-col tw-items-center'>
+              <div className='tw-pt-8 tw-flex tw-flex-col tw-items-center tw-w-full'>
 
-                {loading ? (
-                  <>
-                    {/* Mobile Loading */}
-                    <div className="tw-h-[428px] tw-w-full sm:tw-hidden">
-                      <SkeletonCard />
-                    </div>
-
-                    {/* Desktop Loading */}
-                    <div className="tw-hidden desktop-home-feature-card">
-                      {[...Array(3)].map((_, i) => (<SkeletonCard key={i} />
-                      ))}
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    {/* Carousel */}
-                    <div className='tw-h-[428px] tw-w-full sm:tw-hidden'>
-                      <Swiper slidesPerView={1.15} centeredSlides={true} spaceBetween={16} >
-                        {dogs.map((dog) => (
-                          <SwiperSlide key={dog.id}  >
-                            <DogCard id={dog.id} {...dog.attributes} buttonClassName='desktop-home-blue-button' onLearnMore={scrollToTop} />
-                          </SwiperSlide>
-                        ))}
-                      </Swiper>
-                    </div>
-
-                    {/* Desktop */}
-                    <div className='tw-hidden desktop-home-feature-card'>
+                {/* Mobile - stays mounted */}
+                <div className="tw-h-[428px] tw-w-full sm:tw-hidden">
+                  {loading ? (
+                    <SkeletonCard />
+                  ) : (
+                    <Swiper
+                      className="tw-w-full"
+                      slidesPerView={1.15}
+                      centeredSlides={true}
+                      spaceBetween={16}
+                      observer={true}
+                      observeParents={true}
+                    >
                       {dogs.map((dog) => (
-                        <DogCard key={dog.id} id={dog.id} {...dog.attributes} buttonClassName='desktop-home-blue-button' onLearnMore={scrollToTop} />
+                        <SwiperSlide key={dog.id}>
+                          <DogCard
+                            id={dog.id}
+                            {...dog.attributes}
+                            buttonClassName="desktop-home-blue-button"
+                            onLearnMore={scrollToTop}
+                          />
+                        </SwiperSlide>
                       ))}
-                    </div>
-                  </>
+                    </Swiper>
+                  )}
+                </div>
+
+                {/* Desktop */}
+                {loading ? (
+                  <div className="tw-hidden desktop-home-feature-card">
+                    {[...Array(3)].map((_, i) => (
+                      <SkeletonCard key={i} />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="tw-hidden desktop-home-feature-card">
+                    {dogs.map((dog) => (
+                      <DogCard
+                        key={dog.id}
+                        id={dog.id}
+                        {...dog.attributes}
+                        buttonClassName="desktop-home-blue-button"
+                        onLearnMore={scrollToTop}
+                      />
+                    ))}
+                  </div>
                 )}
               </div>
             </div>
