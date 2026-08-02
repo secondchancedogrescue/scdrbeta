@@ -13,7 +13,7 @@ export const getAllDogs = async () => {
 
   let response;
 
-  for (let attempt = 0; attempt < 2; attempt++) {
+  for (let attempt = 0; attempt < 4; attempt++) {
     try {
       console.log(`Attempt ${attempt + 1}`);
       response = await axios.get("/api/rescuegroup");
