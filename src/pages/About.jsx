@@ -179,7 +179,7 @@ const About = () => {
           </h2>
           <p>
             Second Chance Dog Rescue does not have a kennel or boarding facility.
-            All of our dogs live in private foster homes while they wait for their forever families, so there are no dogs available to meet our office.
+            All of our dogs live in private foster homes while they wait for their forever families, so there are no dogs available to meet at our office.
             If you're interested in meeting one of our dogs, please submit an adoption application online or visit onr of our upcoming adoption{' '}
             <span onClick={handleOpenCal} className='tw-cursor-pointer tw-text-[#0000cc] hover:tw-underline hover:tw-decoration-[#cc0000] hover:tw-underline-offset-8'>events</span>.
           </p>
