@@ -62,8 +62,8 @@ const generatePictureUrl = (templateUrl, newPicId) => {
   if (!templateUrl || !newPicId) return templateUrl;
 
   const newPicUrl = templateUrl.replace(
-    /\/[^/]+\.jpg(\?.*)?$/,
-    `/${newPicId}.jpg`,
+    /\/[^/]+\.([^.?/]+)(\?.*)?$/i,
+    `/${newPicId}.$1`,
   );
 
   return newPicUrl.split("?")[0];
