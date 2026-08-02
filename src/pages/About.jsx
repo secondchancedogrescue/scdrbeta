@@ -113,7 +113,7 @@ const About = () => {
       <section>
         <div className='tw-h-1 tw-bg-[#cc0000]' />
         <div className='tw-text-center'>
-          <h1 className='tw-text-center tw-font-bold tw-text-4xl tw-pt-14'>Who <span className='tw-text-[#cd1c18]'>We</span> Are</h1>
+          <h1 className='tw-font-bold tw-text-4xl tw-pt-14'>Who <span className='tw-text-[#cd1c18]'>We</span> Are</h1>
           <p className='tw-pt-2 tw-pb-10'>Meet the dedicated board members, staff, and volunteers who guide our mission and help give every dog a second chance.</p>
         </div>
         <div className='desktop-who-we-are'>
