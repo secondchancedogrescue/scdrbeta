@@ -5,37 +5,6 @@ let cachedDogs = null;
 let lastFetchTime = null;
 const CACHE_DURATION = 5 * 60 * 1000;
 
-// Helper function: checks if .jpg exists via HEAD request, falls back to .png
-const generatePictureUrl = async (templateUrl, newPicId) => {
-  if (!templateUrl || !newPicId) return templateUrl;
-
-  // Strip query parameters and replace the filename with the new picture ID
-  const baseUrl = templateUrl.replace(
-    /\/[^/]+(\.jpg|\.png)?(\?.*)?$/,
-    `/${newPicId}`,
-  );
-
-  const jpgUrl = `${baseUrl}.jpg`;
-  const pngUrl = `${baseUrl}.png`;
-
-  try {
-    const jpgResponse = await fetch(jpgUrl, { method: "HEAD" });
-    if (jpgResponse.ok) return jpgUrl;
-  } catch {
-    // Continue to PNG check
-  }
-
-  try {
-    const pngResponse = await fetch(pngUrl, { method: "HEAD" });
-    if (pngResponse.ok) return pngUrl;
-  } catch {
-    // Continue to default fallback
-  }
-
-  // Default fallback to the jpg candidate if both checks fail
-  return jpgUrl;
-};
-
 export const getAllDogs = async () => {
   const now = Date.now();
   if (cachedDogs && lastFetchTime && now - lastFetchTime < CACHE_DURATION) {
@@ -52,11 +21,13 @@ export const getAllDogs = async () => {
     } catch (err) {
       console.log("Failed", attempt + 1, err.response?.status, err.code);
 
+      // If it's NOT a 520, or we've already retried once, stop.
       if (err.response?.status !== 520 || attempt === 1) {
         console.log("Not retrying");
         throw err;
       }
 
+      // Only reaches here for the first 520.
       console.log("Retrying rescuegroup after 520");
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
@@ -64,31 +35,59 @@ export const getAllDogs = async () => {
 
   const dogs = response.data.data;
 
-  // Process all dogs and their picture lists concurrently using Promise.all
-  const processedDogs = await Promise.all(
-    dogs.map(async (dog) => {
-      const picIds = dog.relationships.pictures.data || [];
+  const processedDogs = [];
+  for (const dog of dogs) {
+    const picIds = dog.relationships.pictures.data || [];
 
-      const allPics = await Promise.all(
-        picIds.map((pic) =>
-          generatePictureUrl(dog.attributes.pictureThumbnailUrl, pic.id),
-        ),
+    const allPics = [];
+    for (const pic of picIds) {
+      const picUrl = await generatePictureUrl(
+        dog.attributes.pictureThumbnailUrl,
+        pic.id,
       );
+      allPics.push(picUrl);
+    }
 
-      return {
-        ...dog,
-        attributes: {
-          ...dog.attributes,
-          pictureThumbnailUrl: allPics[0] || null,
-          allPics,
-        },
-      };
-    }),
-  );
+    processedDogs.push({
+      ...dog,
+      attributes: {
+        ...dog.attributes,
+        pictureThumbnailUrl: allPics[0] || null,
+        allPics,
+      },
+    });
+  }
 
   cachedDogs = processedDogs;
   lastFetchTime = now;
   return processedDogs;
+};
+
+// Helper function using Image objects to reliably bypass CORS issues when checking extensions
+const generatePictureUrl = (templateUrl, newPicId) => {
+  if (!templateUrl || !newPicId) return Promise.resolve(templateUrl);
+
+  // Strip query parameters and replace the filename with the new picture ID (.jpg base)
+  const baseUrl = templateUrl.replace(
+    /\/[^/]+(\.jpg|\.png)?(\?.*)?$/,
+    `/${newPicId}`,
+  );
+
+  const jpgUrl = `${baseUrl}.jpg`;
+  const pngUrl = `${baseUrl}.png`;
+
+  return new Promise((resolve) => {
+    const img = new Image();
+
+    img.onload = () => resolve(jpgUrl);
+    img.onerror = () => {
+      const pngImg = new Image();
+      pngImg.onload = () => resolve(pngUrl);
+      pngImg.onerror = () => resolve(jpgUrl); // Fallback to jpg if both fail
+      pngImg.src = pngUrl;
+    };
+    img.src = jpgUrl;
+  });
 };
 
 export const getDogById = async (id) => {
