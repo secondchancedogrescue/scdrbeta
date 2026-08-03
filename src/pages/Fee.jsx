@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCreditCard, faQrcode } from '@fortawesome/free-solid-svg-icons';
+import { faCreditCard, faQrcode, faPaw } from '@fortawesome/free-solid-svg-icons';
 
 const Fee = () => {
     return (
@@ -34,8 +34,9 @@ const Fee = () => {
                     </a>
                     <p className='tw-text-center tw-text-xs tw-text-[#878787] tw-mb-4'>PayPal, Venmo and Credit/Debit Card options</p>
                 </div>
+
                 {/* Zelle */}
-                <div className='tw-border tw-border-black tw-mb-14'>
+                <div className='tw-border tw-border-black tw-mb-6'>
                     <div className='tw-flex tw-items-center tw-mb-2 tw-mx-4 tw-my-4'>
                         <FontAwesomeIcon icon={faQrcode} className='tw-text-[#cd1c18] tw-text-2xl tw-my-2' />
                         <div className='tw-flex tw-flex-col tw-ml-4'>
@@ -45,6 +46,34 @@ const Fee = () => {
                     </div>
                     <p className='tw-mb-2 tw-mx-2'>Open your bank or Zelle app and scan the code to send your adoption fee.</p>
                     <img className='tw-mx-auto' src="https://secondchancedogrescue.org/wp-content/uploads/2025/12/scdr_zelle_qr.png" alt="Zelle QR Code"></img>
+                </div>
+
+                {/* What Fee Covers */}
+                <div className='tw-border tw-border-black tw-mb-14'>
+                    <p className='tw-font-bold tw-mx-2 tw-mt-4'>What Your Fee Covers</p>
+                    <p className='tw-text-xs tw-text-[#878787] tw-mx-2'>Every adoption fee goes directly toward the rescue, medical care, and rehabilitation of our dogs.</p>
+                    <div className='tw-flex tw-flex-wrap'>
+                        <div className='tw-flex tw-items-center tw-mb-2 tw-mx-4 tw-my-4'>
+                            <FontAwesomeIcon icon={faPaw} className='tw-text-[#cd1c18] tw-my-2' />
+                            <p className='tw-ml-2'>Spay or neuter surgery</p>
+                        </div>
+                        <div className='tw-flex tw-items-center tw-mb-2 tw-mx-4 tw-my-4'>
+                            <FontAwesomeIcon icon={faPaw} className='tw-text-[#cd1c18] tw-my-2' />
+                            <p className='tw-ml-2'>Microchip and registration</p>
+                        </div>
+                        <div className='tw-flex tw-items-center tw-mb-2 tw-mx-4 tw-my-4'>
+                            <FontAwesomeIcon icon={faPaw} className='tw-text-[#cd1c18] tw-my-2' />
+                            <p className='tw-ml-2'>Deworming & flea treatment</p>
+                        </div>
+                        <div className='tw-flex tw-items-center tw-mb-2 tw-mx-4 tw-my-4'>
+                            <FontAwesomeIcon icon={faPaw} className='tw-text-[#cd1c18] tw-my-2' />
+                            <p className='tw-ml-2'>Core vaccinations</p>
+                        </div>
+                        <div className='tw-flex tw-items-center tw-mb-2 tw-mx-4 tw-my-4'>
+                            <FontAwesomeIcon icon={faPaw} className='tw-text-[#cd1c18] tw-my-2' />
+                            <p className='tw-ml-2'>Veterinary wellness exam</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
