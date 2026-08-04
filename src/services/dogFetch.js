@@ -58,29 +58,6 @@ export const getAllDogs = async () => {
       };
     }),
   );
-  // Deprecated
-  // const processedDogs = [];
-  // for (const dog of dogs) {
-  //   const picIds = dog.relationships.pictures.data || [];
-
-  //   const allPics = [];
-  //   for (const pic of picIds) {
-  //     const picUrl = await generatePictureUrl(
-  //       dog.attributes.pictureThumbnailUrl,
-  //       pic.id,
-  //     );
-  //     allPics.push(picUrl);
-  //   }
-
-  //   processedDogs.push({
-  //     ...dog,
-  //     attributes: {
-  //       ...dog.attributes,
-  //       pictureThumbnailUrl: allPics[0] || null,
-  //       allPics,
-  //     },
-  //   });
-  // }
 
   cachedDogs = processedDogs;
   lastFetchTime = now;
