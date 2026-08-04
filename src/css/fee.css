@@ -15,7 +15,7 @@
 
     .desktop-fee-hero::before {
         content: '';
-        background: url('https://secondchancedogrescue.org/wp-content/uploads/2020/01/logo.png') center no-repeat;
+        background: url('../assets/logo.png') center no-repeat;
         background-size: 400px 400px;
         position: absolute;
         top: 50%;
