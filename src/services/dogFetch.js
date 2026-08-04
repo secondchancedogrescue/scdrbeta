@@ -36,8 +36,6 @@ export const getAllDogs = async () => {
 
   const dogs = response.data.data;
 
-  const dogs = response.data.data;
-
   // Process all dogs in parallel
   const processedDogs = await Promise.all(
     dogs.map(async (dog) => {
