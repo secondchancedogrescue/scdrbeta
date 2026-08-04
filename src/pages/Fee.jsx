@@ -2,7 +2,6 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCreditCard, faQrcode, faPaw } from '@fortawesome/free-solid-svg-icons';
 import '../css/fee.css';
-import logo from '../assets/SCDR_logo.png';
 
 const Fee = () => {
     return (
