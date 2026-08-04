@@ -1,0 +1,58 @@
+@media (min-width: 640px) {
+    .desktop-fee-bg {
+        max-width: 1200px;
+        margin-inline: auto;
+    }
+
+    .desktop-fee-hero {
+        max-width: 600px;
+        padding-inline: 1rem;
+        padding-block: 6rem;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .desktop-fee-hero::before {
+        content: '';
+        background: url('https://secondchancedogrescue.org/wp-content/uploads/2020/01/logo.png') center no-repeat;
+        background-size: 400px 400px;
+        position: absolute;
+        top: 50%;
+        right: -30rem;
+        transform: translateY(-45%);
+        height: 500px;
+        width: 500px;
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    .desktop-fee-pay {
+        max-width: 1200px;
+        margin-inline: auto;
+    }
+
+    .desktop-fee-pay-mod {
+        display: flex;
+        justify-content: space-around;
+        /* gap: 2rem; */
+    }
+
+    .desktop-fee-zelle,
+    .desktop-fee-paypal {
+        margin-top: 4rem;
+        max-width: 380px;
+        max-height: 600px;
+        box-shadow: 10px 10px 15px #C8000066;
+    }
+
+    .desktop-fee-paypal a {
+        margin-top: 24rem;
+    }
+
+    .desktop-fee-cover {
+        max-width: 1000px;
+        margin-inline: auto;
+        margin-top: 3rem;
+    }
+}
