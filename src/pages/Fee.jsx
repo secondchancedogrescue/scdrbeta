@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCreditCard, faQrcode, faPaw } from '@fortawesome/free-solid-svg-icons';
 import '../css/fee.css';
+import zelle from '../assets/scdr_zelle_qr.png';
 
 const Fee = () => {
     return (
@@ -51,7 +52,7 @@ const Fee = () => {
                             </div>
                         </div>
                         <p className='tw-mb-2 tw-mx-2'>Open your bank or Zelle app and scan the code to send your adoption fee.</p>
-                        <img className='tw-mx-auto' src="https://secondchancedogrescue.org/wp-content/uploads/2025/12/scdr_zelle_qr.png" alt="Zelle QR Code"></img>
+                        <img className='tw-mx-auto' src={zelle} alt="Zelle QR Code"></img>
                     </div>
                 </div>
 
