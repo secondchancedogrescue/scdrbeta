@@ -35,38 +35,59 @@ export const getAllDogs = async () => {
   
   const dogs = response.data.data;
 
-  const processedDogs = dogs.map((dog) => {
+  const processedDogs = [];
+  for (const dog of dogs) {
     const picIds = dog.relationships.pictures.data || [];
 
-    const allPics = picIds.map((pic) =>
-      generatePictureUrl(dog.attributes.pictureThumbnailUrl, pic.id),
-    );
+    const allPics = [];
+    for (const pic of picIds) {
+      const picUrl = await generatePictureUrl(
+        dog.attributes.pictureThumbnailUrl,
+        pic.id,
+      );
+      allPics.push(picUrl);
+    }
 
-    return {
+    processedDogs.push({
       ...dog,
       attributes: {
         ...dog.attributes,
         pictureThumbnailUrl: allPics[0] || null,
         allPics,
       },
-    };
-  });
+    });
+  }
 
   cachedDogs = processedDogs;
   lastFetchTime = now;
   return processedDogs;
 };
 
-// Helper function to replace picture id with one of the high res
+// Helper function using Image objects to reliably bypass CORS issues when checking extensions
 const generatePictureUrl = (templateUrl, newPicId) => {
-  if (!templateUrl || !newPicId) return templateUrl;
+  if (!templateUrl || !newPicId) return Promise.resolve(templateUrl);
 
-  const newPicUrl = templateUrl.replace(
-    /\/[^/]+\.jpg(\?.*)?$/,
-    `/${newPicId}.jpg`,
+  // Strip query parameters and replace the filename with the new picture ID (.jpg base)
+  const baseUrl = templateUrl.replace(
+    /\/[^/]+(\.jpg|\.png)?(\?.*)?$/,
+    `/${newPicId}`,
   );
 
-  return newPicUrl.split("?")[0];
+  const jpgUrl = `${baseUrl}.jpg`;
+  const pngUrl = `${baseUrl}.png`;
+
+  return new Promise((resolve) => {
+    const img = new Image();
+
+    img.onload = () => resolve(jpgUrl);
+    img.onerror = () => {
+      const pngImg = new Image();
+      pngImg.onload = () => resolve(pngUrl);
+      pngImg.onerror = () => resolve(jpgUrl); // Fallback to jpg if both fail
+      pngImg.src = pngUrl;
+    };
+    img.src = jpgUrl;
+  });
 };
 
 export const getDogById = async (id) => {
