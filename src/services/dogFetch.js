@@ -12,8 +12,9 @@ export const getAllDogs = async () => {
   }
 
   let response;
+  const Max_tries = 3;
 
-  for (let attempt = 0; attempt < 4; attempt++) {
+  for (let attempt = 0; attempt <= Max_tries; attempt++) {
     try {
       console.log(`Attempt ${attempt + 1}`);
       response = await axios.get("/rescuegroup");
@@ -21,8 +22,8 @@ export const getAllDogs = async () => {
     } catch (err) {
       console.log("Failed", attempt + 1, err.response?.status, err.code);
 
-      // If it's NOT a 520, or we've already retried once, stop.
-      if (err.response?.status !== 520 || attempt === 1) {
+      // If it's NOT a 520, or we've already reached our max retried, stop.
+      if (err.response?.status !== 520 || attempt === Max_tries) {
         console.log("Not retrying");
         throw err;
       }
@@ -35,28 +36,51 @@ export const getAllDogs = async () => {
   
   const dogs = response.data.data;
 
-  const processedDogs = [];
-  for (const dog of dogs) {
-    const picIds = dog.relationships.pictures.data || [];
+  // Process all dogs in parallel
+  const processedDogs = await Promise.all(
+    dogs.map(async (dog) => {
+      const picIds = dog.relationships.pictures.data || [];
 
-    const allPics = [];
-    for (const pic of picIds) {
-      const picUrl = await generatePictureUrl(
-        dog.attributes.pictureThumbnailUrl,
-        pic.id,
+      // Fetch all picture URLs for this specific dog concurrently
+      const allPics = await Promise.all(
+        picIds.map((pic) =>
+          generatePictureUrl(dog.attributes.pictureThumbnailUrl, pic.id),
+        ),
       );
-      allPics.push(picUrl);
-    }
 
-    processedDogs.push({
-      ...dog,
-      attributes: {
-        ...dog.attributes,
-        pictureThumbnailUrl: allPics[0] || null,
-        allPics,
-      },
-    });
-  }
+      return {
+        ...dog,
+        attributes: {
+          ...dog.attributes,
+          pictureThumbnailUrl: allPics[0] || null,
+          allPics,
+        },
+      };
+    }),
+  );
+  // Deprecated
+  // const processedDogs = [];
+  // for (const dog of dogs) {
+  //   const picIds = dog.relationships.pictures.data || [];
+
+  //   const allPics = [];
+  //   for (const pic of picIds) {
+  //     const picUrl = await generatePictureUrl(
+  //       dog.attributes.pictureThumbnailUrl,
+  //       pic.id,
+  //     );
+  //     allPics.push(picUrl);
+  //   }
+
+  //   processedDogs.push({
+  //     ...dog,
+  //     attributes: {
+  //       ...dog.attributes,
+  //       pictureThumbnailUrl: allPics[0] || null,
+  //       allPics,
+  //     },
+  //   });
+  // }
 
   cachedDogs = processedDogs;
   lastFetchTime = now;
