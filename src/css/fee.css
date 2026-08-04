@@ -15,7 +15,7 @@
 
     .desktop-fee-hero::before {
         content: '';
-        background: url('../assets/logo.png') center no-repeat;
+        background: url('../assets/SCDR_logo.png') center no-repeat;
         background-size: 400px 400px;
         position: absolute;
         top: 50%;
