@@ -25,5 +25,4 @@ export const volunteer = [
   { name: "Angela Rowe", title: "Volunteer" },
   { name: "Liz Schall", title: "Volunteer" },
   { name: "Amy Thompson", title: "Volunteer" },
-  { name: "Gloria Torres", title: "Volunteer" },
 ];
