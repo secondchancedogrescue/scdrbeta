@@ -70,8 +70,11 @@ const Dogs = () => {
             <h1 className='desktop-adoptable-hero tw-text-3xl tw-font-bold tw-text-center tw-my-4'>
               <span className='tw-text-[#cd1c18]'>Adoptable</span> Dogs
             </h1>
-            <p className='tw-font-light tw-text-lg tw-text-center'>
-              Help them find their forever.
+            <p className='tw-font-light tw-text-sm'>
+              Please note: Our adoptable dogs live in private foster homes.
+              We do not have a public kennel facility for walk-in visits.
+              If you are interested in meeting a dog, please visit that dog's profile page and complete an adoption application.
+              Our team will contact you with next steps, typically within 3 business days.
             </p>
           </div>
         </div>
