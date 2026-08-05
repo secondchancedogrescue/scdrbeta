@@ -39,7 +39,7 @@ export const getAllDogs = async () => {
   // Process all dogs in parallel
   const processedDogs = await Promise.all(
     dogs.map(async (dog) => {
-      const picIds = dog.relationships.pictures.data || [];
+      const picIds = (dog.relationships.pictures.data || []).slice(0, 4);
 
       // Fetch all picture URLs for this specific dog concurrently
       const allPics = await Promise.all(

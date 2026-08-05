@@ -109,7 +109,7 @@ const DogDeets = () => {
                     </h2>
                 </div>
                 <p className='tw-font-extralight tw-text-sm tw-mb-8'>
-                    Includes spay/neuter, vaccinations, microchip, and veterinary care.
+                    Includes spay/neuter, up-to-date vaccinations, microchip, and veterinary care prior to adoption.
                 </p>
                 {isCourtesyPost ?
                     (
