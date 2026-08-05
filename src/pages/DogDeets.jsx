@@ -9,6 +9,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-cards';
 import '../css/deets.css';
+import NoDog from './NoDog';
 
 const scrubText = (txt) => {
     if (!txt) return '';
@@ -22,6 +23,7 @@ const DogDeets = () => {
     const { id } = useParams();
     const [dog, setDog] = useState(null);
     const [imgModal, setImgModal] = useState('');
+    const [loading, setLoading] = useState(true);
 
     const checkCourtesyPost = (name) => name?.toLowerCase().includes('courtesy post');
     const isCourtesyPost = checkCourtesyPost(dog?.attributes?.name)
@@ -30,13 +32,16 @@ const DogDeets = () => {
         const fetchDogs = async () => {
             const data = await getDogById(id);
             setDog(data);
+            setLoading(false);
         };
 
         fetchDogs();
     }, [id]);
 
     // Loading state while fetching
-    if (!dog) return <div>Loading...</div>;
+    if (loading) return <div>Loading...</div>;
+
+    if (!dog) return <NoDog />;
 
     return (
         <div className='desktop-deets'>
