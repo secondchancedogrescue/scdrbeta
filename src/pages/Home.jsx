@@ -12,6 +12,8 @@ import { useModal } from '../components/ModalContext';
 import petsmart from '../assets/PetsmartCharitiesLogo.png';
 import DogCard from '../components/DogCard';
 import SkeletonCard from '../components/SkeletonCard';
+import petfinder from '../assets/Petfinder_Foundation_Logo_hrz_4C_2023.jpg';
+import mrgf from '../assets/mrgf_2025.gif';
 
 const Home = () => {
   const [dogs, setDogs] = useState([]);
@@ -240,10 +242,19 @@ const Home = () => {
         <div className='desktop-home tw-my-10 tw-px-4'>
           <h1 className='tw-text-xl tw-font-bold tw-text-center tw-my-6 tw-text-[#878787]'>Back by Those Who Believe in <span className='tw-text-[#cd1c18] '>Second Chances</span></h1>
 
-          <div className='tw-gap-8 tw-flex tw-flex-wrap tw-items-center tw-justify-center'>
-            <img className='tw-h-auto tw-w-[288px]' src="https://cdn.bfldr.com/JPI2AE08/at/3qxt6smjf5ftk3bft5n8xtc/PetcoLoveLogo_ColorRGB.svg?auto=webp&format=svg" alt="" />
-            <img className='tw-h-auto tw-w-[288px]' src="https://secondchancedogrescue.org/wp-content/uploads/2025/03/Grant-Badge-3-1024x1024.gif" alt="" />
-            <img className='tw-h-auto tw-w-[288px] tw-mb-8' src={petsmart} alt="" />
+          <div className='tw-gap-0 tw-grid tw-grid-cols-2 tw-my-16'>
+            <div className='tw-flex tw-justify-center tw-items-center tw-border-r-4 tw-border-b-4 tw-p-4'>
+              <img className='tw-h-auto tw-w-full tw-max-w-[200px] tw-object-contain' src="https://cdn.bfldr.com/JPI2AE08/at/3qxt6smjf5ftk3bft5n8xtc/PetcoLoveLogo_ColorRGB.svg?auto=webp&format=svg" alt="" />
+            </div>
+            <div className='tw-flex tw-justify-center tw-items-center tw-p-4 tw-border-b-4'>
+              <img className='tw-h-auto tw-w-full tw-max-w-[200px] tw-object-contain]' src={mrgf} alt="" />
+            </div>
+            <div className='tw-flex tw-justify-center tw-items-center tw-p-4 tw-border-r-4'>
+              <img className='tw-h-auto tw-w-full tw-max-w-[200px] tw-object-contain' src={petfinder} alt="" />
+            </div>
+            <div className='tw-flex tw-justify-center tw-items-center tw-p-4'>
+              <img className='tw-h-auto tw-w-full tw-max-w-[200px] tw-object-contain' src={petsmart} alt="" />
+            </div>
           </div>
         </div>
       </section>
