@@ -4,7 +4,7 @@ import '../css/notfound.css';
 const Notfound = () => {
     return (
         <section className='desktop-notfound'>
-            <div className='tw-mx-4 tw-my-56'>
+            <div className='tw-mx-4 tw-my-56 tw-flex tw-justify-center'>
                 <img src="https://github.com/secondchancedogrescue/scdrbeta/blob/main/src/assets/404_2026.webp?raw=true" alt="" />
             </div>
         </section>
