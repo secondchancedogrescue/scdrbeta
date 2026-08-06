@@ -5,7 +5,7 @@ const Notfound = () => {
     return (
         <section className='desktop-notfound'>
             <div className='tw-mx-4 tw-my-56'>
-                <img src="https://github.com/secondchancedogrescue/scdrbeta/blob/main/src/assets/404_2026.png?raw=true" alt="" />
+                <img src="https://github.com/secondchancedogrescue/scdrbeta/blob/main/src/assets/404_2026.webp?raw=true" alt="" />
             </div>
         </section>
     )
