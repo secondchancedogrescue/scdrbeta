@@ -242,18 +242,18 @@ const Home = () => {
         <div className='desktop-home tw-my-10 tw-px-4'>
           <h1 className='tw-text-xl tw-font-bold tw-text-center tw-my-6 tw-text-[#878787]'>Back by Those Who Believe in <span className='tw-text-[#cd1c18] '>Second Chances</span></h1>
 
-          <div className='tw-gap-0 tw-grid tw-grid-cols-2 tw-my-16 tw-mx-auto tw-max-w-[400px]'>
-            <div className='tw-aspect-square tw-flex tw-justify-center tw-items-center tw-border-r-4 tw-border-b-4 tw-p-4'>
-              <img className='tw-h-auto tw-w-full tw-max-w-[200px] tw-max-h-[200px] tw-object-contain' src="https://cdn.bfldr.com/JPI2AE08/at/3qxt6smjf5ftk3bft5n8xtc/PetcoLoveLogo_ColorRGB.svg?auto=webp&format=svg" alt="" />
+          <div className='tw-grid tw-grid-cols-2 tw-gap-0.5 tw-bg-[#878787] tw-my-16 tw-mx-auto tw-max-w-[400px]'>
+            <div className='tw-aspect-square tw-grid tw-place-items-center tw-bg-white tw-p-4'>
+              <img className='tw-h-auto tw-w-full tw-block tw-max-w-[200px] tw-object-contain' src="https://cdn.bfldr.com/JPI2AE08/at/3qxt6smjf5ftk3bft5n8xtc/PetcoLoveLogo_ColorRGB.svg?auto=webp&format=svg" alt="" />
             </div>
-            <div className='tw-aspect-square tw-flex tw-justify-center tw-items-center tw-p-4 tw-border-b-4'>
-              <img className='tw-h-auto tw-w-full tw-max-w-[200px] tw-max-h-[200px] tw-object-contain]' src={mrgf} alt="" />
+            <div className='tw-aspect-square tw-grid tw-place-items-center tw-bg-white tw-p-4'>
+              <img className='tw-h-auto tw-w-full tw-block tw-max-w-[200px] tw-object-contain' src={mrgf} alt="" />
             </div>
-            <div className='tw-aspect-square tw-flex tw-justify-center tw-items-center tw-p-4 tw-border-r-4'>
-              <img className='tw-h-auto tw-w-full tw-max-w-[200px] tw-max-h-[200px] tw-object-contain' src={petfinder} alt="" />
+            <div className='tw-aspect-square tw-grid tw-place-items-center tw-bg-white tw-p-4'>
+              <img className='tw-h-auto tw-w-full tw-block tw-max-w-[200px] tw-object-contain' src={petfinder} alt="" />
             </div>
-            <div className='tw-aspect-square tw-flex tw-justify-center tw-items-center tw-p-4'>
-              <img className='tw-h-auto tw-w-full tw-max-w-[200px] tw-max-h-[200px] tw-object-contain' src={petsmart} alt="" />
+            <div className='tw-aspect-square tw-grid tw-place-items-center tw-bg-white tw-p-4'>
+              <img className='tw-h-auto tw-w-full tw-block tw-max-w-[200px] tw-object-contain' src={petsmart} alt="" />
             </div>
           </div>
         </div>
