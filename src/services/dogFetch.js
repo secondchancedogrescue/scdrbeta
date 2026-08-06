@@ -4,6 +4,7 @@ import axios from "axios";
 let cachedDogs = null;
 let lastFetchTime = null;
 const CACHE_DURATION = 5 * 60 * 1000;
+let fetchPromise = null;
 
 export const getAllDogs = async () => {
   const now = Date.now();
@@ -11,57 +12,69 @@ export const getAllDogs = async () => {
     return cachedDogs;
   }
 
-  let response;
-  const Max_tries = 3;
+  if (fetchPromise) {
+    return fetchPromise;
+  }
 
-  for (let attempt = 0; attempt <= Max_tries; attempt++) {
+  fetchPromise = (async () => {
     try {
-      console.log(`Attempt ${attempt + 1}`);
-      response = await axios.get("/rescuegroup");
-      break;
-    } catch (err) {
-      console.log("Failed", attempt + 1, err.response?.status, err.code);
+      let response;
+      const Max_tries = 3;
 
-      // If it's NOT a 520, or we've already reached our max retried, stop.
-      if (err.response?.status !== 520 || attempt === Max_tries) {
-        console.log("Not retrying");
-        throw err;
+      for (let attempt = 0; attempt <= Max_tries; attempt++) {
+        try {
+          console.log(`Attempt ${attempt + 1}`);
+          response = await axios.get("/rescuegroup");
+          break;
+        } catch (err) {
+          console.log("Failed", attempt + 1, err.response?.status, err.code);
+
+          // If it's NOT a 520, or we've already reached our max retries, stop.
+          if (err.response?.status !== 520 || attempt === Max_tries) {
+            console.log("Not retrying");
+            throw err;
+          }
+
+          // Only reaches here for 520s before the last attempt.
+          console.log("Retrying rescuegroup after 520");
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+        }
       }
 
-      // Only reaches here for the first 520.
-      console.log("Retrying rescuegroup after 520");
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-    }
-  }
-  
-  const dogs = response.data.data;
+      const dogs = response.data.data;
 
-  // Process all dogs in parallel
-  const processedDogs = await Promise.all(
-    dogs.map(async (dog) => {
-      const picIds = (dog.relationships.pictures.data || []).slice(0, 4);
+      // Process all dogs in parallel
+      const processedDogs = await Promise.all(
+        dogs.map(async (dog) => {
+          const picIds = (dog.relationships.pictures.data || []).slice(0, 4);
 
-      // Fetch all picture URLs for this specific dog concurrently
-      const allPics = await Promise.all(
-        picIds.map((pic) =>
-          generatePictureUrl(dog.attributes.pictureThumbnailUrl, pic.id),
-        ),
+          // Fetch all picture URLs for this specific dog concurrently
+          const allPics = await Promise.all(
+            picIds.map((pic) =>
+              generatePictureUrl(dog.attributes.pictureThumbnailUrl, pic.id),
+            ),
+          );
+
+          return {
+            ...dog,
+            attributes: {
+              ...dog.attributes,
+              pictureThumbnailUrl: allPics[0] || null,
+              allPics,
+            },
+          };
+        }),
       );
 
-      return {
-        ...dog,
-        attributes: {
-          ...dog.attributes,
-          pictureThumbnailUrl: allPics[0] || null,
-          allPics,
-        },
-      };
-    }),
-  );
+      cachedDogs = processedDogs;
+      lastFetchTime = Date.now();
+      return processedDogs;
+    } finally {
+      fetchPromise = null;
+    }
+  })();
 
-  cachedDogs = processedDogs;
-  lastFetchTime = now;
-  return processedDogs;
+  return fetchPromise;
 };
 
 // Helper function using Image objects to reliably bypass CORS issues when checking extensions
