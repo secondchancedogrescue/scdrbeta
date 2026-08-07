@@ -18,7 +18,7 @@
     }
 
     .desktop-deets-prime-pic:hover,
-    .desktop-deets-thumb-pic:hover {
+    .desktop-deets-thumb-pic img:hover {
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     }
 
