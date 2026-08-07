@@ -68,9 +68,9 @@
         margin-top: 6px;
     }
 
-    .desktop-vol-volunteer-card:hover {
+    /* .desktop-vol-volunteer-card:hover {
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    }
+    } */
 
     .desktop-vol-volunteer-cta:hover {
         background-color: #cc0000;
