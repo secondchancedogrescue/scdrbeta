@@ -6,8 +6,8 @@ const NoDog = () => {
     return (
         <section className='desktop-nodog'>
             <div className='tw-mx-4 tw-my-24'>
-                <h1 className='tw-mt-24 tw-text-4xl tw-font-bold'><span className='tw-text-[#cd1c18]'>WoOf!</span> This dog status is no longer available.</h1>
-                <p className='tw-my-4'>
+                <h1 className='tw-text-4xl tw-font-bold tw-text-center'><span className='tw-text-[#cd1c18]'>WoOf!</span> This dog status is no longer available.</h1>
+                <p className='tw-my-4 tw-text-center'>
                     The dog you are looking for may have found a home or is currently not available for adoption.
                 </p>
                 <div className='tw-flex tw-justify-center tw-items-center tw-flex-col'>
