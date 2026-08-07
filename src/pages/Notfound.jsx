@@ -1,18 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import '../css/notfound.css';
 
 const Notfound = () => {
     return (
-        <section>
-            <div className='tw-mx-4 tw-my-24'>
-                <h1 className='tw-mt-24 tw-text-4xl tw-font-bold'><span className='tw-text-[#cd1c18]'>Oops!</span> This page wandered off.</h1>
-                <p className='tw-my-4'>
-                    We couldn't find the page you were looking for.
-                    Maybe it found a loving foster home elsewhere.
-                </p>
-                <Link className='tw-text-[#0000cc]' to='/dogs'>
-                    Meet Our Dogs
-                </Link>
+        <section className='desktop-notfound'>
+            <div className='tw-mx-4 tw-my-56 tw-flex tw-justify-center'>
+                <img className='tw-border' src="https://github.com/secondchancedogrescue/scdrbeta/blob/main/src/assets/404_2026.webp?raw=true" alt="" />
             </div>
         </section>
     )
