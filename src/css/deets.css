@@ -17,6 +17,11 @@
         height: auto;
     }
 
+    .desktop-deets-prime-pic:hover,
+    .desktop-deets-thumb-pic:hover {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
     .desktop-deets-thumb-pic {
         width: calc(33.33%);
         display: flex;
