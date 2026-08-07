@@ -10,7 +10,7 @@ const NoDog = () => {
                 <p className='tw-my-4'>
                     The dog you are looking for may have found a home or is currently not available for adoption.
                 </p>
-                <div className='tw-flex tw-justify-center'>
+                <div className='tw-flex tw-justify-center tw-items-center tw-flex-col'>
                     <img className='tw-my-2' src="https://github.com/secondchancedogrescue/scdrbeta/blob/main/src/assets/nodog.webp?raw=true" alt="" />
                     <Link className='tw-text-[#0000cc]' to='/dogs'>
                         Meet The Ones That Are!
