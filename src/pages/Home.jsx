@@ -240,7 +240,7 @@ const Home = () => {
       {/* Supporters */}
       <section>
         <div className='desktop-home tw-my-10 tw-px-4'>
-          <h1 className='tw-text-xl tw-font-bold tw-text-center tw-my-6 tw-text-[#878787]'>Back by Those Who Believe in <span className='tw-text-[#cd1c18] '>Second Chances</span></h1>
+          <h1 className='tw-text-xl tw-font-bold tw-text-center tw-my-6 tw-text-[#878787]'>Backed by Those Who Believe in <span className='tw-text-[#cd1c18] '>Second Chances</span></h1>
 
           <div className='tw-grid tw-grid-cols-2 tw-gap-0.5 tw-bg-[#878787] tw-my-16 tw-mx-auto tw-max-w-[400px]'>
             <div className='tw-aspect-square tw-grid tw-place-items-center tw-bg-white tw-p-4'>
