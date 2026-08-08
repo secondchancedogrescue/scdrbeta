@@ -1,38 +1,48 @@
-export async function onRequest(context) {
-  const { env, request } = context;
-//  const cache = caches.default;
+export default async function handler(_, resp) {
+  // const response = await fetch(ENDPT_URL, {
+  //   headers: { Authorization: API_KEY },
+  // });
 
-/*  const cacheKey = new Request(
-    new URL("/rescuegroup", request.url),
-    { method: "GET" }
-  );
+  // const data = await response.json();
 
-  const cachedResponse = await cache.match(cacheKey);
+  // resp.status(200).json(data);
 
-  if (cachedResponse) return cachedResponse; */
+  const MAX_RETRIES = 4;
+  let response;
 
-  const response = await fetch(env.RG_ENDPT_URL, {
-    headers: {
-      Authorization: env.RG_API_KEY,
-    },
-  });
+  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      console.log(`Cloudflare Function: Attempt ${attempt}`);
+      response = await fetch(ENDPT_URL, {
+        headers: { Authorization: API_KEY },
+      });
 
-  if (!response.ok) {
-    console.log(response.statusText);
-    console.log(await response.clone().text());
-    return response;
+      if (response.ok) {
+        break; // Success! Exit retry loop
+      }
+
+      console.log(`Upstream failed with status: ${response.status}`);
+
+      if (attempt === MAX_RETRIES) {
+        return resp
+          .status(520)
+          .json({ error: "Upstream API failed after retries" });
+      }
+    } catch (err) {
+      console.log(`Attempt ${attempt} error:`, err.message);
+
+      if (attempt === MAX_RETRIES) {
+        return resp
+          .status(520)
+          .json({ error: "Upstream API connection failed" });
+      }
+    }
+
+    // Exponential backoff delay (1s, then 2s)
+    const delay = Math.pow(2, attempt - 1) * 1000;
+    await new Promise((resolve) => setTimeout(resolve, delay));
   }
 
-  const newResponse = new Response(response.body, {
-    headers: {
-      "Content-Type": "application/json",
-      "Cache-Control": "public, max-age=60",
-    },
-  });
-
- /*  context.waitUntil(
-    cache.put(cacheKey, newResponse.clone())
-  ); */
-
-  return newResponse;
+  const data = await response.json();
+  resp.status(200).json(data);
 }
