@@ -1,4 +1,4 @@
-export async onRequest(context) {
+export async function onRequest(context) {
   const { env, request } = context;
   // const response = await fetch(ENDPT_URL, {
   //   headers: { Authorization: API_KEY },
