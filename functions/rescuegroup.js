@@ -1,4 +1,5 @@
-export default async function handler(_, resp) {
+export async onRequest(context) {
+  const { env, request } = context;
   // const response = await fetch(ENDPT_URL, {
   //   headers: { Authorization: API_KEY },
   // });
@@ -13,8 +14,8 @@ export default async function handler(_, resp) {
   for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
     try {
       console.log(`Cloudflare Function: Attempt ${attempt}`);
-      response = await fetch(ENDPT_URL, {
-        headers: { Authorization: API_KEY },
+      response = await fetch(env.RG_ENDPT_URL, {
+        headers: { Authorization: env.RG_API_KEY },
       });
 
       if (response.ok) {
