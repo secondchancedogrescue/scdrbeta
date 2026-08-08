@@ -19,27 +19,29 @@ export const getAllDogs = async () => {
   fetchPromise = (async () => {
     try {
       let response;
-      const Max_tries = 3;
+      console.log(`Calling rescuegroup`);
+      response = await axios.get("/api/rescuegroup");
+      // const Max_tries = 3;
 
-      for (let attempt = 0; attempt <= Max_tries; attempt++) {
-        try {
-          console.log(`Attempt ${attempt + 1}`);
-          response = await axios.get("/api/rescuegroup");
-          break;
-        } catch (err) {
-          console.log("Failed", attempt + 1, err.response?.status, err.code);
+      // for (let attempt = 0; attempt <= Max_tries; attempt++) {
+      //   try {
+      //     console.log(`Attempt ${attempt + 1}`);
+      //     response = await axios.get("/api/rescuegroup");
+      //     break;
+      //   } catch (err) {
+      //     console.log("Failed", attempt + 1, err.response?.status, err.code);
 
-          // If it's NOT a 520, or we've already reached our max retries, stop.
-          if (err.response?.status !== 520 || attempt === Max_tries) {
-            console.log("Not retrying");
-            throw err;
-          }
+      //     // If it's NOT a 520, or we've already reached our max retries, stop.
+      //     if (err.response?.status !== 520 || attempt === Max_tries) {
+      //       console.log("Not retrying");
+      //       throw err;
+      //     }
 
-          // Only reaches here for 520s before the last attempt.
-          console.log("Retrying rescuegroup after 520");
-          await new Promise((resolve) => setTimeout(resolve, 1000));
-        }
-      }
+      //     // Only reaches here for 520s before the last attempt.
+      //     console.log("Retrying rescuegroup after 520");
+      //     await new Promise((resolve) => setTimeout(resolve, 1000));
+      //   }
+      // }
 
       const dogs = response.data.data;
 
