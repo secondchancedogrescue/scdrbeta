@@ -47,9 +47,6 @@ const Footer = () => {
           <a className='tw-mt-2 tw-px-1 tw-py-1 hover:tw-text-[#cc0000] hover:tw-bg-white' href="https://2ndchancedogrescue.substack.com" target='_blank' rel='noopener noreferrer'>
             Our Substack
           </a>
-          <Link to='/fee' onClick={scrollToTop} className='tw-mt-2 tw-px-1 tw-py-1 hover:tw-text-[#cc0000] hover:tw-bg-white'>
-            Adoption Fee
-          </Link>
           <Link to='/privacy' onClick={scrollToTop}
             className='tw-mt-2 tw-px-1 tw-py-1 hover:tw-text-[#cc0000] hover:tw-bg-white'>
             Privacy Policy
