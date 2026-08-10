@@ -66,6 +66,18 @@ const Privacy = () => {
                 <p>
                     Cloudflare Web Analytics is designed to provide privacy-focused analytics and does not use cookies to identify individual visitors.
                 </p>
+                <h3 className='tw-my-4 tw-font-[500]'>
+                    Microsoft Clarity Analytics
+                </h3>
+                <p className='tw-my-2'>
+                    We use Microsoft Clarity to understand how visitors interact with our website and to improve our website and online content.
+                    Microsoft Clarity may collect information about website interactions through behavior metrics, heatmaps, and session replay.
+                    Microsoft Clarity may use cookies and other tracking technologies to collect information about website usage and interactions.
+                </p>
+                <p className='tw-my-2'>
+                    For more information about how Microsoft collects and uses information through Clarity, please see
+                    <a className='tw-text-[#0000cc] tw-ml-1' href="https://www.microsoft.com/privacy/privacystatement">Microsoft Privacy Statement</a>.
+                </p>
                 <h2 className='tw-my-4 tw-text-xl tw-font-[500]'>
                     Embedded and Linked Services
                 </h2>
