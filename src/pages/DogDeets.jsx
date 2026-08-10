@@ -128,6 +128,9 @@ const DogDeets = () => {
                         </a>
                     )
                 }
+                <p className='tw-font-extralight tw-text-sm tw-my-2'>
+                    Typically respond within 3 business days.
+                </p>
             </div>
         </div>
     )
