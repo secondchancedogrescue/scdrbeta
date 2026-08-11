@@ -8,7 +8,7 @@ import { navItems } from '../data/navigation';
 
 const Footer = () => {
   const currentYr = new Date().getFullYear();
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  const scrollToTop = () => { document.documentElement.scrollTop = 0; document.body.scrollTop = 0; window.scrollTo(0, 0) };
 
   return (
     <footer className='tw-bg-[#0000cc] tw-text-[#ffff00] tw-pt-4'>
