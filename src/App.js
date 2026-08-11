@@ -12,10 +12,12 @@ import { ModalProvider } from "./components/ModalContext.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import Notfound from "./pages/Notfound.jsx";
 import Fee from "./pages/Fee.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <ModalProvider>
         <Header />
         <main>
