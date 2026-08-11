@@ -122,6 +122,8 @@ const Home = () => {
             Adoption Process
           </h1>
           <p className='tw-font-light tw-text-lg tw-mt-6'>
+            Every dog is different, and every adoption is different.
+            We work with you to determine whether the dog you're interested in is a good fit for your home.
             A second chance for a forgotten dog starts with these five simple steps.
           </p>
 

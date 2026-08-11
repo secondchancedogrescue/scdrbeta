@@ -106,7 +106,7 @@ const DogDeets = () => {
             </div>
 
             {/* CTA to adopt */}
-            <div className='desktop-deets-cta tw-m-4 tw-max-w-[320px] tw-rounded-lg tw-py-2 tw-px-2 tw-bg-[#cd1c18]/10 tw-relative'>
+            <div className='desktop-deets-cta tw-my-4 tw-mx-auto tw-max-w-[320px] tw-rounded-lg tw-py-2 tw-px-2 tw-bg-[#cd1c18]/10 tw-relative'>
                 <div className=''>
                     <h3 className='tw-font-bold tw-mb-8'>Adoption Fee</h3>
                     <h2 className='tw-font-bold tw-text-[#cd1c18] tw-text-2xl tw-absolute tw-top-2 tw-right-6'>
@@ -128,6 +128,9 @@ const DogDeets = () => {
                         </a>
                     )
                 }
+                <p className='tw-font-extralight tw-text-sm tw-my-2'>
+                    Typically respond within 3 business days.
+                </p>
             </div>
         </div>
     )
