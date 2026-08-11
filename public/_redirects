@@ -1,3 +1,5 @@
 /available-dogs   /dogs   301
 /adopt-a-dog      /dogs   301
 /adopt            /dogs   301
+/foster           /volunteer   301
+/planned-giving   /donate   301
