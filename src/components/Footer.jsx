@@ -8,7 +8,6 @@ import { navItems } from '../data/navigation';
 
 const Footer = () => {
   const currentYr = new Date().getFullYear();
-  const scrollToTop = () => { document.documentElement.scrollTop = 0; document.body.scrollTop = 0; window.scrollTo(0, 0) };
 
   return (
     <footer className='tw-bg-[#0000cc] tw-text-[#ffff00] tw-pt-4'>
@@ -32,7 +31,7 @@ const Footer = () => {
         <div className='footer-explorer tw-flex tw-flex-col tw-mt-6 tw-mx-3'>
           <p className='tw-text-[#1591ea] tw-text-sm'>EXPLORER</p>
           {navItems.map(({ to, label }) => (
-            <Link key={to} to={to} onClick={scrollToTop}
+            <Link key={to} to={to}
               className='tw-mt-2 tw-px-1 tw-py-1 hover:tw-text-[#cc0000] hover:tw-bg-white'
             >
               {label}
@@ -46,7 +45,7 @@ const Footer = () => {
           <a className='tw-mt-2 tw-px-1 tw-py-1 hover:tw-text-[#cc0000] hover:tw-bg-white' href="https://2ndchancedogrescue.substack.com" target='_blank' rel='noopener noreferrer'>
             Our Substack
           </a>
-          <Link to='/privacy' onClick={scrollToTop}
+          <Link to='/privacy'
             className='tw-mt-2 tw-px-1 tw-py-1 hover:tw-text-[#cc0000] hover:tw-bg-white'>
             Privacy Policy
           </Link>
