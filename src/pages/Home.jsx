@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -24,8 +23,6 @@ const Home = () => {
       setLoading(false);
     })
   }, [])
-
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
     <main >
@@ -68,7 +65,6 @@ const Home = () => {
                             id={dog.id}
                             {...dog.attributes}
                             buttonClassName="desktop-home-blue-button"
-                            onLearnMore={scrollToTop}
                           />
                         </SwiperSlide>
                       ))}
@@ -91,7 +87,6 @@ const Home = () => {
                         id={dog.id}
                         {...dog.attributes}
                         buttonClassName="desktop-home-blue-button"
-                        onLearnMore={scrollToTop}
                       />
                     ))}
                   </div>
@@ -101,10 +96,10 @@ const Home = () => {
 
             {/*Hero CTAs*/}
             <div className='desktop-home-hero-cta tw-flex tw-flex-col tw-items-center tw-w-fit tw-mx-auto'>
-              <Link to='/dogs' onClick={scrollToTop} className='desktop-home-hero-button tw-inline-flex tw-items-center tw-justify-center tw-rounded-full tw-mt-8 tw-mb-4 tw-w-[16rem] tw-py-2 tw-bg-[#cd1c18] tw-text-white'>
+              <Link to='/dogs' className='desktop-home-hero-button tw-inline-flex tw-items-center tw-justify-center tw-rounded-full tw-mt-8 tw-mb-4 tw-w-[16rem] tw-py-2 tw-bg-[#cd1c18] tw-text-white'>
                 Meet Our Dogs <FontAwesomeIcon icon={faCircleArrowRight} className='tw-ml-1' />
               </Link>
-              <Link to='/volunteer' onClick={scrollToTop} className='desktop-home-hero-button tw-inline-flex tw-justify-center tw-rounded-full tw-w-[16rem] tw-mb-16 tw-py-2 tw-border tw-border-black'>
+              <Link to='/volunteer' className='desktop-home-hero-button tw-inline-flex tw-justify-center tw-rounded-full tw-w-[16rem] tw-mb-16 tw-py-2 tw-border tw-border-black'>
                 Become a Foster
               </Link>
             </div>
@@ -207,7 +202,7 @@ const Home = () => {
           </div>
 
           {/* Adoption Process CTA*/}
-          <Link to='/dogs' onClick={scrollToTop} className='tw-inline-flex tw-items-center tw-justify-center tw-rounded-full tw-mt-8 tw-mb-4 tw-w-[16rem] tw-py-3 tw-bg-[#cd1c18] tw-text-white hover:tw-bg-[#0000cc] hover:tw-text-[#ffff00]'>
+          <Link to='/dogs' className='tw-inline-flex tw-items-center tw-justify-center tw-rounded-full tw-mt-8 tw-mb-4 tw-w-[16rem] tw-py-3 tw-bg-[#cd1c18] tw-text-white hover:tw-bg-[#0000cc] hover:tw-text-[#ffff00]'>
             Start your journey today <FontAwesomeIcon icon={faHeart} className='tw-ml-1' />
           </Link>
         </div>
@@ -225,7 +220,7 @@ const Home = () => {
 
             {/*Donation CTAs*/}
             <div className='desktop-home-hero-cta tw-flex tw-flex-col tw-items-center'>
-              <Link to='/donate' onClick={scrollToTop} className='desktop-home-hero-button tw-inline-flex tw-items-center tw-justify-center tw-rounded-full tw-mt-8 tw-mb-4 tw-w-[16rem] tw-py-2 tw-bg-[#cd1c18] tw-text-white'>
+              <Link to='/donate' className='desktop-home-hero-button tw-inline-flex tw-items-center tw-justify-center tw-rounded-full tw-mt-8 tw-mb-4 tw-w-[16rem] tw-py-2 tw-bg-[#cd1c18] tw-text-white'>
                 Donate Today <FontAwesomeIcon icon={faHeart} className='tw-ml-1' />
               </Link>
               <a className='desktop-home-hero-button tw-inline-flex tw-justify-center tw-rounded-full tw-w-[16rem] tw-py-2 tw-border tw-border-black' href="https://2ndchancedogrescue.substack.com" target='_blank' rel='noopener noreferrer'>
