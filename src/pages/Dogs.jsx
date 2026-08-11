@@ -14,7 +14,7 @@ const Dogs = () => {
   const introRef = useRef(null);
   const [loading, setLoading] = useState(true);
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  const scrollToTop = () => window.scrollTo(0, 0);
 
   useEffect(() => {
     const fetchDogs = async () => {
