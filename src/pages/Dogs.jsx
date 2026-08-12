@@ -14,8 +14,6 @@ const Dogs = () => {
   const introRef = useRef(null);
   const [loading, setLoading] = useState(true);
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
   useEffect(() => {
     const fetchDogs = async () => {
       setLoading(true);
@@ -127,7 +125,6 @@ const Dogs = () => {
                 {...dog.attributes}
                 imageClassName="desktop-adoptable-photo"
                 buttonClassName="desktop-dog-blue-button"
-                onLearnMore={scrollToTop}
               />
             ))
           )}

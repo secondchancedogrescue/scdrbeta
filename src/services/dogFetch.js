@@ -113,6 +113,9 @@ export const getDogById = async (id) => {
 
 export const getRandomDogs = async (count = 3) => {
   const dogs = await getAllDogs();
-  const shuffled = [...dogs].sort(() => 0.5 - Math.random());
+  const featuredDogs = dogs.filter(
+    (dog) => dog.attributes.isCourtesyPost !== true,
+  );
+  const shuffled = [...featuredDogs].sort(() => 0.5 - Math.random());
   return shuffled.slice(0, count);
 };

@@ -18,8 +18,6 @@ const Header = () => {
 
   }, [isOpen]);
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
   return (
     <header className={`tw-bg-[#fffafa] tw-text-[#cd1c18] tw-fixed tw-top-0 tw-left-0 tw-w-full tw-z-20`}>
       <div className='desktop-nav tw-flex tw-items-stretch tw-justify-between tw-pl-4'>
@@ -38,12 +36,12 @@ const Header = () => {
         <nav className='tw-hidden md:tw-flex tw-items-center'>
           <div className='tw-flex tw-gap-6'>
             {navItems.filter(({ to }) => to !== '/donate').map(({ to, label }) => (
-              <NavLink key={to} to={to} end onClick={scrollToTop} className={({ isActive }) => `tw-rounded-full tw-px-4 tw-py-2 tw-transition-colors ${isActive ? "tw-bg-[#cd1c18] tw-text-[#fffafa]" : "tw-text-[#cd1c18] hover:tw-bg-[#f2f2f2]"}`}>
+              <NavLink key={to} to={to} end className={({ isActive }) => `tw-rounded-full tw-px-4 tw-py-2 tw-transition-colors ${isActive ? "tw-bg-[#cd1c18] tw-text-[#fffafa]" : "tw-text-[#cd1c18] hover:tw-bg-[#f2f2f2]"}`}>
                 {label}
               </NavLink>
             ))}
           </div>
-          <NavLink to='/donate' onClick={scrollToTop}
+          <NavLink to='/donate'
             className={({ isActive }) => `tw-transition-colors ${isActive ? "tw-bg-[#cc0000] tw-text-[#fffafa]" : "tw-text-[#fffafa] tw-bg-[#1D4ED8] hover:tw-bg-[#b31916]"} tw-ml-8 tw-self-stretch tw-flex tw-items-center tw-justify-center tw-px-8 tw-uppercase tw-tracking-[0.2rem]`}>
             Donate
           </NavLink>
@@ -56,7 +54,7 @@ const Header = () => {
 
         <nav className={`${isOpen ? 'tw-flex' : 'tw-hidden'} tw-absolute tw-top-full tw-w-full tw-left-0 tw-overflow-y-auto tw-flex-col tw-items-start tw-text-3xl tw-bg-[#fffafa] tw-gap-6 tw-pt-8 tw-h-[calc(100vh-64px)] md:hidden`}>
           {navItems.map(({ to, label }) => (
-            <NavLink key={to} to={to} end onClick={() => { setIsOpen(false); scrollToTop() }} className={({ isActive }) => `tw-block tw-w-full tw-pl-8 tw-py-4 tw-transition-colors ${isActive ? "tw-bg-[#cd1c18] tw-text-[#fffafa]" : "hover:tw-bg-[#f2f2f2] hover:tw-text-[#cd1c18]"}`}>
+            <NavLink key={to} to={to} end onClick={() => setIsOpen(false)} className={({ isActive }) => `tw-block tw-w-full tw-pl-8 tw-py-4 tw-transition-colors ${isActive ? "tw-bg-[#cd1c18] tw-text-[#fffafa]" : "hover:tw-bg-[#f2f2f2] hover:tw-text-[#cd1c18]"}`}>
               {label}
             </NavLink>
           ))}
