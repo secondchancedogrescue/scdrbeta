@@ -50,7 +50,7 @@ const Home = () => {
               <div className='tw-pt-8 tw-flex tw-flex-col tw-items-center tw-w-full'>
 
                 {/* Mobile - stays mounted */}
-                <div className="tw-h-[428px] tw-w-full sm:tw-hidden">
+                <div className="tw-h-[428px] tw-w-full min-[840px]:tw-hidden">
                   {loading ? (
                     <SkeletonCard />
                   ) : (

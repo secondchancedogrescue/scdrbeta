@@ -11,17 +11,6 @@ const ScrollToTop = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [pathname])
-    // useEffect(() => {
-    //     const rafId = requestAnimationFrame(() => {
-    //         window.scrollTo({
-    //             top: 0,
-    //             left: 0,
-    //             behavior: 'auto',
-    //         });
-    //     });
-
-    //     return () => cancelAnimationFrame(rafId);
-    // }, [pathname]);
 
     return null
 }

@@ -1,9 +1,7 @@
-
-@media (min-width: 640px) {
-    button.md\:hidden { display: none !important;}
-    
+@media (min-width: 840px) {
     .desktop-nav {
         max-width: 1200px;
         margin: 0 auto;
     }
+
 }

@@ -33,7 +33,7 @@ const Header = () => {
         </div>
 
         {/*Desktop Nav*/}
-        <nav className='tw-hidden md:tw-flex tw-items-center'>
+        <nav className='tw-hidden min-[840px]:tw-flex tw-items-center'>
           <div className='tw-flex tw-gap-6'>
             {navItems.filter(({ to }) => to !== '/donate').map(({ to, label }) => (
               <NavLink key={to} to={to} end className={({ isActive }) => `tw-rounded-full tw-px-4 tw-py-2 tw-transition-colors ${isActive ? "tw-bg-[#cd1c18] tw-text-[#fffafa]" : "tw-text-[#cd1c18] hover:tw-bg-[#f2f2f2]"}`}>
@@ -48,11 +48,11 @@ const Header = () => {
         </nav>
 
         {/*Mobile Nav*/}
-        <button className='md:hidden tw-z-20 tw-pr-4' onClick={() => setIsOpen(!isOpen)}>
+        <button className='min-[840px]:tw-hidden tw-z-20 tw-pr-4' onClick={() => setIsOpen(!isOpen)}>
           <FontAwesomeIcon icon={faBars} className='tw-text-3xl' />
         </button>
 
-        <nav className={`${isOpen ? 'tw-flex' : 'tw-hidden'} tw-absolute tw-top-full tw-w-full tw-left-0 tw-overflow-y-auto tw-flex-col tw-items-start tw-text-3xl tw-bg-[#fffafa] tw-gap-6 tw-pt-8 tw-h-[calc(100vh-64px)] md:hidden`}>
+        <nav className={`${isOpen ? 'tw-flex' : 'tw-hidden'} tw-absolute tw-top-full tw-w-full tw-left-0 tw-overflow-y-auto tw-flex-col tw-items-start tw-text-3xl tw-bg-[#fffafa] tw-gap-6 tw-pt-8 tw-h-[calc(100vh-64px)] min-[840px]:tw-hidden`}>
           {navItems.map(({ to, label }) => (
             <NavLink key={to} to={to} end onClick={() => setIsOpen(false)} className={({ isActive }) => `tw-block tw-w-full tw-pl-8 tw-py-4 tw-transition-colors ${isActive ? "tw-bg-[#cd1c18] tw-text-[#fffafa]" : "hover:tw-bg-[#f2f2f2] hover:tw-text-[#cd1c18]"}`}>
               {label}
