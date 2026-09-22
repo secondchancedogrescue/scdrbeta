@@ -10,6 +10,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-cards';
 import '../css/deets.css';
 import NoDog from './NoDog';
+import SkeletonCardDogDeets from '../components/SkeletonCardDogDeets';
 
 const scrubText = (txt) => {
     if (!txt) return '';
@@ -39,7 +40,7 @@ const DogDeets = () => {
     }, [id]);
 
     // Loading state while fetching
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <SkeletonCardDogDeets />;
 
     if (!dog) return <NoDog />;
 
@@ -51,7 +52,7 @@ const DogDeets = () => {
                     {/* <Swiper effect='cards' grabCursor={true} modules={[EffectCards]} > */}
                     {dog.attributes.allPics.map((url, index) => (
                         <SwiperSlide key={index}>
-                            <div className=''>
+                            <div>
                                 <img className='tw-w-full tw-h-[428px] tw-object-contain' src={url} alt="" />
                             </div>
                         </SwiperSlide>
