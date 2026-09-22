@@ -40,7 +40,7 @@ const DogDeets = () => {
     }, [id]);
 
     // Loading state while fetching
-    // if (loading) return <SkeletonCardDogDeets />;
+    if (loading) return <SkeletonCardDogDeets />;
 
     if (!dog) return <NoDog />;
 
