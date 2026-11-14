@@ -11,7 +11,7 @@ const Dogs = () => {
   const [dogs, setDogs] = useState([]);
   const [filterSex, setFilterSex] = useState('All');
   const [sortBy, setSortBy] = useState('AZ');
-  const introRef = useRef(null);
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -62,7 +62,7 @@ const Dogs = () => {
   return (
     <main>
       {/* Intro banner */}
-      <section ref={introRef}>
+      <section>
         <div>
           <div className='desktop-adoptable tw-flex-tw-flex-col tw-justify-center tw-mx-4 tw-py-8 tw-mt-20'>
             <h1 className='desktop-adoptable-hero tw-text-3xl tw-font-bold tw-text-center tw-my-4'>
