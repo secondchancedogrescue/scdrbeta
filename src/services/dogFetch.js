@@ -31,7 +31,7 @@ const getRawDogs = async () => {
   rawFetchPromise = (async () => {
     try {
       console.log("Calling rescuegroup");
-      const response = await axios.get("/api/rescuegroup");
+      const response = await axios.get("/functions/rescuegroup");
 
       cachedRawDogs = response.data.data;
       lastRawFetchTime = Date.now();
