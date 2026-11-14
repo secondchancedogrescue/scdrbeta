@@ -6,8 +6,66 @@ let lastFetchTime = null;
 const CACHE_DURATION = 5 * 60 * 1000;
 let fetchPromise = null;
 
+// CHANGE: Cache the original RescueGroups records separately from processed dogs.
+// This allows the homepage to select 3 dogs before resolving any photo URLs.
+let cachedRawDogs = null;
+let lastRawFetchTime = null;
+let rawFetchPromise = null;
+
+// CHANGE: Retrieve and cache all raw dog records without resolving their photos.
+const getRawDogs = async () => {
+  const now = Date.now();
+
+  if (
+    cachedRawDogs &&
+    lastRawFetchTime &&
+    now - lastRawFetchTime < CACHE_DURATION
+  ) {
+    return cachedRawDogs;
+  }
+
+  if (rawFetchPromise) {
+    return rawFetchPromise;
+  }
+
+  rawFetchPromise = (async () => {
+    try {
+      console.log("Calling rescuegroup");
+      const response = await axios.get("/api/rescuegroup");
+
+      cachedRawDogs = response.data.data;
+      lastRawFetchTime = Date.now();
+
+      return cachedRawDogs;
+    } finally {
+      rawFetchPromise = null;
+    }
+  })();
+
+  return rawFetchPromise;
+};
+
+// CHANGE: Resolve only the profile photo for a dog.
+const getDogWithProfilePicture = async (dog) => {
+  const picIds = (dog.relationships.pictures.data || []).slice(0, 4);
+
+  const pictureThumbnailUrl = picIds.length
+    ? await generatePictureUrl(dog.attributes.pictureThumbnailUrl, picIds[0].id)
+    : null;
+
+  return {
+    ...dog,
+    attributes: {
+      ...dog.attributes,
+      pictureThumbnailUrl,
+      allPics: picIds.length ? [pictureThumbnailUrl] : [],
+    },
+  };
+};
+
 export const getAllDogs = async () => {
   const now = Date.now();
+
   if (cachedDogs && lastFetchTime && now - lastFetchTime < CACHE_DURATION) {
     return cachedDogs;
   }
@@ -18,58 +76,16 @@ export const getAllDogs = async () => {
 
   fetchPromise = (async () => {
     try {
-      let response;
-      console.log(`Calling rescuegroup`);
-      response = await axios.get("/api/rescuegroup");
-      // const Max_tries = 3;
+      // CHANGE: Resolve only one photo per dog for the Available Dogs page.
+      const dogs = await getRawDogs();
 
-      // for (let attempt = 0; attempt <= Max_tries; attempt++) {
-      //   try {
-      //     console.log(`Attempt ${attempt + 1}`);
-      //     response = await axios.get("/api/rescuegroup");
-      //     break;
-      //   } catch (err) {
-      //     console.log("Failed", attempt + 1, err.response?.status, err.code);
-
-      //     // If it's NOT a 520, or we've already reached our max retries, stop.
-      //     if (err.response?.status !== 520 || attempt === Max_tries) {
-      //       console.log("Not retrying");
-      //       throw err;
-      //     }
-
-      //     // Only reaches here for 520s before the last attempt.
-      //     console.log("Retrying rescuegroup after 520");
-      //     await new Promise((resolve) => setTimeout(resolve, 1000));
-      //   }
-      // }
-
-      const dogs = response.data.data;
-
-      // Process all dogs in parallel
       const processedDogs = await Promise.all(
-        dogs.map(async (dog) => {
-          const picIds = (dog.relationships.pictures.data || []).slice(0, 4);
-
-          // Fetch all picture URLs for this specific dog concurrently
-          const allPics = await Promise.all(
-            picIds.map((pic) =>
-              generatePictureUrl(dog.attributes.pictureThumbnailUrl, pic.id),
-            ),
-          );
-
-          return {
-            ...dog,
-            attributes: {
-              ...dog.attributes,
-              pictureThumbnailUrl: allPics[0] || null,
-              allPics,
-            },
-          };
-        }),
+        dogs.map((dog) => getDogWithProfilePicture(dog)),
       );
 
       cachedDogs = processedDogs;
       lastFetchTime = Date.now();
+
       return processedDogs;
     } finally {
       fetchPromise = null;
@@ -107,15 +123,42 @@ const generatePictureUrl = (templateUrl, newPicId) => {
 };
 
 export const getDogById = async (id) => {
-  const dogs = await getAllDogs();
-  return dogs.find((dog) => dog.id === id);
+  // CHANGE: Resolve all available gallery photos only for the selected dog.
+  const dogs = await getRawDogs();
+  const dog = dogs.find((dog) => dog.id === id);
+
+  if (!dog) return undefined;
+
+  const picIds = (dog.relationships?.pictures?.data || []).slice(0, 4);
+
+  const allPics = await Promise.all(
+    picIds.map((pic) =>
+      generatePictureUrl(dog.attributes.pictureThumbnailUrl, pic.id),
+    ),
+  );
+
+  return {
+    ...dog,
+    attributes: {
+      ...dog.attributes,
+      pictureThumbnailUrl: allPics[0] || null,
+      allPics,
+    },
+  };
 };
 
 export const getRandomDogs = async (count = 3) => {
-  const dogs = await getAllDogs();
+  // CHANGE: Select random non-courtesy dogs BEFORE resolving their photos.
+  const dogs = await getRawDogs();
+
   const featuredDogs = dogs.filter(
     (dog) => dog.attributes.isCourtesyListing !== true,
   );
+
   const shuffled = [...featuredDogs].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, count);
+
+  // CHANGE: Resolve only the profile photos of the selected dogs.
+  const selectedDogs = shuffled.slice(0, count);
+
+  return Promise.all(selectedDogs.map((dog) => getDogWithProfilePicture(dog)));
 };
